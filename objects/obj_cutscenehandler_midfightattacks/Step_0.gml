@@ -1,10 +1,10 @@
-if (room == rm_two && !instance_exists(obj_mewmew)) 
+/*if (room == rm_two && !instance_exists(obj_mewmew)) 
 {
     // If you are in the new room but Mewmew hasn't been spawned yet,
     // wait for the Room Start event to finish spawning her.
     exit; 
 }
-
+*/
 
 var _textbox_open = instance_exists(obj_textbox);
 var _textbox_just_closed = textbox_was_open && !_textbox_open;

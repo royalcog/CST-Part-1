@@ -991,10 +991,14 @@ function scr_text(_text, _character = noone, _index = noone, _mode = noone, _fre
 				scr_text_color_gradient(make_colour_rgb(255, 242, 0), make_colour_rgb(255, 174, 201));
 			break;
 			
+			case "lancer":
+				
+			
 			case "empty":
 			    // no speaker_sprite set, text stays at default position
 				snd[global.page_number] = snd_empty;
 			break;
+			
 		}
 	}
 	

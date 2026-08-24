@@ -8,7 +8,7 @@
 // scr_text_cutoff_slow(11, 11, 0.1); -> Slows down the text, and cuts it off at letter x
 
 /// @param text_id
-function scr_game_text(_text_id)eae
+function scr_game_text(_text_id)
 {
 	switch (_text_id)
 	{
