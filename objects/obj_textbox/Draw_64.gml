@@ -351,7 +351,7 @@ if secondary_text[page] != ""
         {
             var _sec_portrait_w = sprite_get_width(secondary_portrait_spr[page]) * _sec_portrait_scale;
             var _sec_portrait_h = sprite_get_height(secondary_portrait_spr[page]) * _sec_portrait_scale;
-            draw_sprite_ext(secondary_portrait_spr[page], 0, _sec_x + _sec_portrait_w / 2,
+            draw_sprite_ext(secondary_portrait_spr[page], secondary_image[page], _sec_x + _sec_portrait_w / 2,
                 _sec_y + _sec_portrait_h / 2, secondary_side[page] * _sec_portrait_scale,
                 _sec_portrait_scale, 0, c_white, 1);
             _sec_x += _sec_portrait_w + _sec_margin_x;

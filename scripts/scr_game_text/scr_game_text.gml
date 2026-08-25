@@ -14,7 +14,7 @@ function scr_game_text(_text_id)
 	{
 		case "self_1":
 			scr_text("* Hey, Lancer!|* How's Castle Town been since we left?", "susie", 7);	
-			scr_text_secondary("My Bad", spr_susie_dialogue);
+			scr_text_secondary("My Bad", spr_susie_dialogue, 2);
 				scr_char_move_on_page(obj_susie, spr_susie_walk_up, true, 0, -20, .2, 90);
 				scr_obj_sprite_on_page_delayed(obj_lancer, spr_lancer_down, false, 0, 45);
 				scr_obj_sprite_on_page_delayed(obj_susie, spr_susie_walk_up, false, 0, 90);

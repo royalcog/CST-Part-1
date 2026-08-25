@@ -32,6 +32,7 @@ speaker_portrait_animating[0] = false; // <-- added
 //secondary (mini, borderless) textbox
 secondary_text[0] = "";
 secondary_portrait_spr[0] = noone;
+secondary_image[0] = 0;
 secondary_side[0] = 1;
 secondary_draw_char = 0;
 //options

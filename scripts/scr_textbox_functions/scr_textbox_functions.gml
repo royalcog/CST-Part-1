@@ -39,16 +39,19 @@ function scr_set_defaults_for_text()
 	text_speed_override[global.page_number] = noone;
 	secondary_text[global.page_number] = "";
 	secondary_portrait_spr[global.page_number] = noone;
+	secondary_image[global.page_number] = 0;
 	secondary_side[global.page_number] = 1;
 }
 
 /// @param text - the aside/mini-textbox line (no border, drawn under the main box)
 /// @param [portrait_spr] - small speaker portrait to draw to the left of the aside, or noone
+/// @param [image] - which frame/index of portrait_spr to draw (e.g. a specific expression on a multi-frame sheet like spr_susie_dialogue)
 /// @param [side] - 1 or -1, mirrors the portrait horizontally (same convention as global.speaker_side)
-function scr_text_secondary(_text, _portrait_spr = noone, _side = 1)
+function scr_text_secondary(_text, _portrait_spr = noone, _image = 0, _side = 1)
 {
 	secondary_text[global.page_number - 1] = _text;
 	secondary_portrait_spr[global.page_number - 1] = _portrait_spr;
+	secondary_image[global.page_number - 1] = _image;
 	secondary_side[global.page_number - 1] = _side;
 }
 
