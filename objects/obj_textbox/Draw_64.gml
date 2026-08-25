@@ -100,6 +100,7 @@ if text_pause_timer <= 0
                     tail_anim_frame = 0;
                     tail_anim_done = false;
                     draw_char = 0;
+                    secondary_draw_char = 0;
                     if facing_change[page] != noone
                     {
                         obj_kris.face = facing_change[page];
@@ -146,6 +147,7 @@ if accept_key
             tail_anim_frame = 0;
             tail_anim_done = false;
             draw_char = 0;
+            secondary_draw_char = 0;
             if facing_change[page] != noone
             {
                 obj_kris.face = facing_change[page];
@@ -186,11 +188,11 @@ if (!hide_box_sprite)
 
 if global.speaker_sprite[page] != noone
 {
-    sprite_index = global.speaker_sprite[page];
+    var _portrait_spr = global.speaker_sprite[page];
     var _portrait_x = textbox_x + global.portrait_x_offset[page] + 10;
-    var _scale = ((textbox_height - border * 2) / sprite_get_height(global.speaker_sprite[page])) * 0.9;
-    var _portrait_w = sprite_get_width(global.speaker_sprite[page]);
-    draw_sprite_ext(sprite_index, global.speaker_image[page], _portrait_x + _portrait_w * _scale / 2,
+    var _scale = ((textbox_height - border * 2) / sprite_get_height(_portrait_spr)) * 0.9;
+    var _portrait_w = sprite_get_width(_portrait_spr);
+    draw_sprite_ext(_portrait_spr, global.speaker_image[page], _portrait_x + _portrait_w * _scale / 2,
         textbox_y + border + 8, global.speaker_side[page] * _scale, _scale, 0, c_white, 1);
 }
 
@@ -321,4 +323,44 @@ if speaker_portrait_tail_spr[page] != noone
     var _py = textbox_y + textbox_height - 240;
     var _pscale = ((textbox_height - border * 2) / sprite_get_height(speaker_portrait_tail_spr[page])) * 0.9;
     draw_sprite_ext(speaker_portrait_tail_spr[page], floor(tail_anim_frame), _px, _py, 2, 2, 0, c_white, 1);
+}
+
+// secondary (mini, borderless "aside") textbox — types out once the main line finishes
+if secondary_text[page] != ""
+{
+    var _sec_length = string_length(secondary_text[page]);
+
+    if (draw_char >= text_length[page]) && (secondary_draw_char < _sec_length)
+    {
+        secondary_draw_char += text_speed;
+        secondary_draw_char = clamp(secondary_draw_char, 0, _sec_length);
+    }
+
+    var _sec_str = string_copy(secondary_text[page], 1, floor(secondary_draw_char));
+
+    if (string_length(_sec_str) > 0)
+    {
+        var _sec_scale = 1.4;              // smaller than the main text_scale (2)
+        var _sec_margin_x = 14;             // left/right padding around the aside
+        var _sec_margin_y = 10;             // gap below the main textbox
+        var _sec_portrait_scale = 0.55;     // shrink whatever portrait sprite is passed in
+        var _sec_y = textbox_y + textbox_height + _sec_margin_y;
+        var _sec_x = textbox_x + border + _sec_margin_x;
+
+        if secondary_portrait_spr[page] != noone
+        {
+            var _sec_portrait_w = sprite_get_width(secondary_portrait_spr[page]) * _sec_portrait_scale;
+            var _sec_portrait_h = sprite_get_height(secondary_portrait_spr[page]) * _sec_portrait_scale;
+            draw_sprite_ext(secondary_portrait_spr[page], 0, _sec_x + _sec_portrait_w / 2,
+                _sec_y + _sec_portrait_h / 2, secondary_side[page] * _sec_portrait_scale,
+                _sec_portrait_scale, 0, c_white, 1);
+            _sec_x += _sec_portrait_w + _sec_margin_x;
+        }
+
+        draw_set_font(fnt_determination);
+        draw_set_halign(fa_left);
+        draw_set_valign(fa_top);
+        draw_text_transformed_color(_sec_x, _sec_y, _sec_str, _sec_scale, _sec_scale, 0,
+            c_white, c_white, c_white, c_white, 1);
+    }
 }

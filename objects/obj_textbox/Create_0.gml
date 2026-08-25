@@ -29,6 +29,11 @@ center_text = false;
 speaker_portrait_spr[0] = noone;      // <-- added
 speaker_portrait_frame[0] = 0;        // <-- added
 speaker_portrait_animating[0] = false; // <-- added
+//secondary (mini, borderless) textbox
+secondary_text[0] = "";
+secondary_portrait_spr[0] = noone;
+secondary_side[0] = 1;
+secondary_draw_char = 0;
 //options
 option[0] = "";
 option_link_id[0] = -1;

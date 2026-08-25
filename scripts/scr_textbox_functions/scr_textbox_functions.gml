@@ -37,6 +37,19 @@ function scr_set_defaults_for_text()
 	speaker_portrait_tail_spr[global.page_number] = noone;
 	text_x_offset_right[global.page_number] = 0;
 	text_speed_override[global.page_number] = noone;
+	secondary_text[global.page_number] = "";
+	secondary_portrait_spr[global.page_number] = noone;
+	secondary_side[global.page_number] = 1;
+}
+
+/// @param text - the aside/mini-textbox line (no border, drawn under the main box)
+/// @param [portrait_spr] - small speaker portrait to draw to the left of the aside, or noone
+/// @param [side] - 1 or -1, mirrors the portrait horizontally (same convention as global.speaker_side)
+function scr_text_secondary(_text, _portrait_spr = noone, _side = 1)
+{
+	secondary_text[global.page_number - 1] = _text;
+	secondary_portrait_spr[global.page_number - 1] = _portrait_spr;
+	secondary_side[global.page_number - 1] = _side;
 }
 
 //text VFX
@@ -906,19 +919,19 @@ function scr_text(_text, _character = noone, _index = noone, _mode = noone, _fre
 		{
 			case "susie":
 				scr_text_color_default(make_colour_rgb(175, 103, 175));
-			    global.speaker_sprite[global.page_number] = spr_susie;
+			    global.speaker_sprite[global.page_number] = spr_susie_dialogue;
 				snd[global.page_number] = snd_susie;
 			break;
 			
 			case "ralsei":
 				scr_text_color_default(make_colour_rgb(77, 204, 142));
-			    global.speaker_sprite[global.page_number] = spr_ralsei;
+			    global.speaker_sprite[global.page_number] = spr_ralsei_dialogue;
 				snd[global.page_number] = snd_ralsei;
 			break;
 			
 			case "noelle":
 				scr_text_color_default(make_colour_rgb(255, 253, 250));
-			    global.speaker_sprite[global.page_number] = spr_noelle;
+			    global.speaker_sprite[global.page_number] = spr_noelle_dialogue;
 				snd[global.page_number] = snd_noelle;
 			break;
 			
