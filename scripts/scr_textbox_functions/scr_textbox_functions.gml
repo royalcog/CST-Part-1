@@ -41,18 +41,62 @@ function scr_set_defaults_for_text()
 	secondary_portrait_spr[global.page_number] = noone;
 	secondary_image[global.page_number] = 0;
 	secondary_side[global.page_number] = 1;
+	secondary_col[global.page_number] = c_white;
+	secondary_snd[global.page_number] = noone;
 }
 
 /// @param text - the aside/mini-textbox line (no border, drawn under the main box)
-/// @param [portrait_spr] - small speaker portrait to draw to the left of the aside, or noone
-/// @param [image] - which frame/index of portrait_spr to draw (e.g. a specific expression on a multi-frame sheet like spr_susie_dialogue)
+/// @param [character] - same character id used by scr_text ("susie", "ralsei", etc.) — sets color, sound, and default portrait
+/// @param [image] - which frame/index of the character's portrait sprite to draw (e.g. a specific expression)
 /// @param [side] - 1 or -1, mirrors the portrait horizontally (same convention as global.speaker_side)
-function scr_text_secondary(_text, _portrait_spr = noone, _image = 0, _side = 1)
+function scr_text_secondary(_text, _character = noone, _image = 0, _side = 1)
 {
-	secondary_text[global.page_number - 1] = _text;
-	secondary_portrait_spr[global.page_number - 1] = _portrait_spr;
-	secondary_image[global.page_number - 1] = _image;
-	secondary_side[global.page_number - 1] = _side;
+	var _page = global.page_number - 1;
+	secondary_text[_page] = _text;
+	secondary_image[_page] = _image;
+	secondary_side[_page] = _side;
+	secondary_col[_page] = c_white;
+	secondary_portrait_spr[_page] = noone;
+	secondary_snd[_page] = noone;
+
+	if (_character != noone)
+	{
+		switch (_character)
+		{
+			case "susie":
+				secondary_col[_page] = make_colour_rgb(175, 103, 175);
+				secondary_portrait_spr[_page] = spr_susie_dialogue;
+				secondary_snd[_page] = snd_susie;
+			break;
+
+			case "ralsei":
+				secondary_col[_page] = make_colour_rgb(77, 204, 142);
+				secondary_portrait_spr[_page] = spr_ralsei_dialogue;
+				secondary_snd[_page] = snd_ralsei;
+			break;
+
+			case "noelle":
+				secondary_col[_page] = make_colour_rgb(255, 253, 250);
+				secondary_portrait_spr[_page] = spr_noelle_dialogue;
+				secondary_snd[_page] = snd_noelle;
+			break;
+
+			case "lancer":
+				secondary_col[_page] = make_colour_rgb(85, 133, 189);
+				secondary_snd[_page] = snd_lancer;
+			break;
+
+			case "mewmew":
+				secondary_col[_page] = make_colour_rgb(255, 138, 144);
+				secondary_snd[_page] = snd_empty;
+			break;
+
+			case "gerson":
+				secondary_col[_page] = make_colour_rgb(101, 170, 38);
+				secondary_snd[_page] = snd_gerson;
+			break;
+		}
+	}
 }
 
 //text VFX

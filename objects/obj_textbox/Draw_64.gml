@@ -101,6 +101,7 @@ if text_pause_timer <= 0
                     tail_anim_done = false;
                     draw_char = 0;
                     secondary_draw_char = 0;
+                    secondary_snd_count = 0;
                     if facing_change[page] != noone
                     {
                         obj_kris.face = facing_change[page];
@@ -148,6 +149,7 @@ if accept_key
             tail_anim_done = false;
             draw_char = 0;
             secondary_draw_char = 0;
+            secondary_snd_count = 0;
             if facing_change[page] != noone
             {
                 obj_kris.face = facing_change[page];
@@ -329,11 +331,31 @@ if speaker_portrait_tail_spr[page] != noone
 if secondary_text[page] != ""
 {
     var _sec_length = string_length(secondary_text[page]);
+    var _sec_prev_chars = floor(secondary_draw_char);
 
     if (draw_char >= text_length[page]) && (secondary_draw_char < _sec_length)
     {
         secondary_draw_char += text_speed;
         secondary_draw_char = clamp(secondary_draw_char, 0, _sec_length);
+
+        // play the speaker's tick sound as new characters get revealed
+        var _sec_new_chars = floor(secondary_draw_char);
+        if _sec_new_chars > _sec_prev_chars && secondary_snd[page] != noone
+        {
+            var _sec_check_char = string_char_at(secondary_text[page], _sec_new_chars);
+            if _sec_check_char != "*" && _sec_check_char != " "
+            {
+                if secondary_snd_count < secondary_snd_delay
+                {
+                    secondary_snd_count++;
+                }
+                else
+                {
+                    secondary_snd_count = 0;
+                    audio_play_sound(secondary_snd[page], 8, false);
+                }
+            }
+        }
     }
 
     var _sec_str = string_copy(secondary_text[page], 1, floor(secondary_draw_char));
@@ -342,18 +364,21 @@ if secondary_text[page] != ""
     {
         var _sec_scale = 1.4;              // smaller than the main text_scale (2)
         var _sec_margin_x = 14;             // left/right padding around the aside
-        var _sec_margin_y = 10;             // gap above the main textbox
-        var _sec_portrait_scale = 0.55;     // shrink whatever portrait sprite is passed in
-        var _sec_h = string_height("Ay") * _sec_scale; // rough line height for the aside text
-        var _sec_y = textbox_y - _sec_h - _sec_margin_y;
-        var _sec_x = textbox_x + border + _sec_margin_x;
+        var _sec_margin_y = 10;             // inset from the main box's bottom edge
+        var _sec_portrait_scale = 0.7;      // slightly bigger than before (was 0.55)
+        var _sec_h = string_height("Ay") * _sec_scale; // shared line height for portrait + text
+        var _sec_anchor_x = textbox_x + textbox_width - 220; // start point, inset from the box's right edge — tune to taste
+        var _sec_y_adjust = -20; // move the whole mini-box (portrait + text) up — tune to taste
+        var _sec_y = textbox_y + textbox_height - _sec_h - _sec_margin_y + _sec_y_adjust; // bottom-right corner of the main box
+        var _sec_x = _sec_anchor_x;
+        var _sec_col = secondary_col[page];
 
         if secondary_portrait_spr[page] != noone
         {
             var _sec_portrait_w = sprite_get_width(secondary_portrait_spr[page]) * _sec_portrait_scale;
-            var _sec_portrait_h = sprite_get_height(secondary_portrait_spr[page]) * _sec_portrait_scale;
+            var _sec_portrait_y_adjust = -6; // nudge up to visually match the text line (tune to taste)
             draw_sprite_ext(secondary_portrait_spr[page], secondary_image[page], _sec_x + _sec_portrait_w / 2,
-                _sec_y + _sec_portrait_h / 2, secondary_side[page] * _sec_portrait_scale,
+                _sec_y + _sec_portrait_y_adjust, secondary_side[page] * _sec_portrait_scale,
                 _sec_portrait_scale, 0, c_white, 1);
             _sec_x += _sec_portrait_w + _sec_margin_x;
         }
@@ -362,6 +387,6 @@ if secondary_text[page] != ""
         draw_set_halign(fa_left);
         draw_set_valign(fa_top);
         draw_text_transformed_color(_sec_x, _sec_y, _sec_str, _sec_scale, _sec_scale, 0,
-            c_white, c_white, c_white, c_white, 1);
+            _sec_col, _sec_col, _sec_col, _sec_col, 1);
     }
 }

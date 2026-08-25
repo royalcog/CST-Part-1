@@ -34,7 +34,11 @@ secondary_text[0] = "";
 secondary_portrait_spr[0] = noone;
 secondary_image[0] = 0;
 secondary_side[0] = 1;
+secondary_col[0] = c_white;
+secondary_snd[0] = noone;
 secondary_draw_char = 0;
+secondary_snd_count = 0;
+secondary_snd_delay = 2;
 //options
 option[0] = "";
 option_link_id[0] = -1;
