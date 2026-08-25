@@ -14,26 +14,35 @@ function scr_game_text(_text_id)
 	{
 		case "self_1":
 			scr_text("* Hey, Lancer!|* How's Castle Town been since we left?", "susie", 7);	
-			scr_text_secondary("My Bad", "susie", 2);
 				scr_char_move_on_page(obj_susie, spr_susie_walk_up, true, 0, -20, .2, 90);
 				scr_obj_sprite_on_page_delayed(obj_lancer, spr_lancer_down, false, 0, 45);
 				scr_obj_sprite_on_page_delayed(obj_susie, spr_susie_walk_up, false, 0, 90);
+			scr_text("* Incredible!", "lancer", 8);	
+			scr_text("* ...Okay.", "susie", 10);	
+			scr_text("* How's", "susie", 2);
+				scr_text_cutoff_skip(7);
+			scr_text("* Incredible!", "lancer", 8);	
+				scr_text_slow(.2);
+			scr_text("* ...", "susie", 3);
+			scr_text("* Hey, um...", "susie", 0);
+			scr_text("* I know it's probably not the BEST idea, but...", "susie", 13);
+			scr_text("* I was thinking you should, uh...", "susie", 10);
+			scr_text("* Yes?", "lancer", 2);	
+			scr_text("* You should probably go... talk to your dad?|* See how he's doing?", "susie", 3);
+			scr_text("* With everything that's happened, we kinda forgot he's still here, so...", "susie", 12);
+			scr_text("* Maybe go do that?|* Or not?", "susie", 20);
+			scr_text("* Do you wanna come?", "lancer", 1);
+			scr_text("* Uh...", "susie", 25);
+			scr_text("* Not... really?", "susie", 20);
+			scr_text("* Anyways, I need to go talk to Ralsei about something, so...", "susie", 7);
+			scr_text("* See you later?", "susie", 21);
+			scr_text("* You bet!", "lancer", 2);
+			scr_text("* Cool.", "susie", 2);
+				scr_char_move_after_textbox(obj_susie, spr_susie_walk_down, true, 0, 20, .3, 90);
+				scr_obj_sprite_after_textbox_delayed(obj_susie, spr_invischaracter, false, 0, 90);
 		break;
 /*
 Case 1:
-(Susie walks in)
-Susie: Hey, Lancer! How’s Castle Town been since we left?
-Lancer: Incredible! (smug)
-Susie: ...Okay.
-Susie: How’s
-Lancer: Incredible! (smug)
-Susie: ...
-Susie: Hey, um...
-Susie: I know it’s probably not the BEST idea, but...
-Susie: I was thinking you should, uh...
-Lancer: Yes?
-Susie: You should probably go... talk to your dad? See how he’s doing?
-Susie: With everything that’s happened the last few days, we kinda forget he’s still in that cell, so...
 Susie: Maybe go do that? Or not?
 Susie: Uh...
 Susie: Yeah.

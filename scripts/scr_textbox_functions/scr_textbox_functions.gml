@@ -83,6 +83,7 @@ function scr_text_secondary(_text, _character = noone, _image = 0, _side = 1)
 
 			case "lancer":
 				secondary_col[_page] = make_colour_rgb(85, 133, 189);
+				secondary_portrait_spr[_page] = spr_lancer_dialogue;
 				secondary_snd[_page] = snd_lancer;
 			break;
 
@@ -1053,6 +1054,7 @@ function scr_text(_text, _character = noone, _index = noone, _mode = noone, _fre
 			
 			case "lancer":
 				snd[global.page_number] = snd_lancer;
+				global.speaker_sprite[global.page_number] = spr_lancer_dialogue;
 				scr_text_color_default(make_colour_rgb(85, 133, 189));
 			break;
 			
