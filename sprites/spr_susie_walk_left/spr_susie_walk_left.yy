@@ -26,7 +26,7 @@
   ],
   "name":"spr_susie_walk_left",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Susie",
     "path":"folders/Sprites/Characters/Susie.yy",
@@ -87,7 +87,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":12,
+    "xorigin":13,
     "yorigin":21,
   },
   "swatchColours":null,
