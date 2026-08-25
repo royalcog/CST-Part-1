@@ -671,6 +671,15 @@ function scr_char_move_after_textbox(_obj, _sprite, _loop, _dx, _dy, _speed, _du
     
     if (instance_exists(_cutscene_obj))
     {
+        var _calculated_delay = 0;
+        for (var i = 0; i < array_length(_cutscene_obj.pending_delayed_queue); i++)
+        {
+            if (variable_struct_exists(_cutscene_obj.pending_delayed_queue[i], "movement_duration"))
+            {
+                _calculated_delay += _cutscene_obj.pending_delayed_queue[i].movement_duration;
+            }
+        }
+
         var _entry = {
             is_movement: true,
             obj: _obj,
@@ -680,7 +689,7 @@ function scr_char_move_after_textbox(_obj, _sprite, _loop, _dx, _dy, _speed, _du
             dy: _dy,
             speed: _speed,
             movement_duration: _duration,
-            delay: 0, // <--- CHANGED FROM _calculated_delay to 0 so it runs instantly on click!
+            delay: _calculated_delay, // chains after any movement(s) already queued for this batch
             fade_out: _fade_out,        
             fade_speed: _fade_speed     
         };

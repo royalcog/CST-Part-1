@@ -38,20 +38,15 @@ function scr_game_text(_text_id)
 			scr_text("* See you later?", "susie", 21);
 			scr_text("* You bet!", "lancer", 2);
 			scr_text("* Cool.", "susie", 2);
-				scr_char_move_after_textbox(obj_susie, spr_susie_walk_right, true, 3, 0, .3, 60);
-				scr_char_move_after_textbox(obj_susie, spr_susie_walk_down, true, 0, -20, .3, 90);
+				scr_char_move_after_textbox(obj_susie, spr_susie_walk_right, true, 3, 0, .8, 20);
+				scr_char_move_after_textbox(obj_susie, spr_susie_walk_up, true, 0, -20, .3, 90);
 				scr_obj_sprite_after_textbox_delayed(obj_susie, spr_invischaracter, false, 150);
 		break;
+		
+		case "self_2":
+			scr_fade_warp_with_music(rm_one, 240, sng_empty);
+		break;
 /*
-Case 1:
-Susie: Maybe go do that? Or not?
-Susie: Uh...
-Susie: Yeah.
-Susie: Anyways, I need to go talk to Ralsei about something, so...
-Susie: See you later?
-Lancer: You bet!
-Susie: Cool.
-(Susie leaves)
 
 */
 
