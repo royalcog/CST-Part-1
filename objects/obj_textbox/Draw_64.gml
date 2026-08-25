@@ -342,9 +342,10 @@ if secondary_text[page] != ""
     {
         var _sec_scale = 1.4;              // smaller than the main text_scale (2)
         var _sec_margin_x = 14;             // left/right padding around the aside
-        var _sec_margin_y = 10;             // gap below the main textbox
+        var _sec_margin_y = 10;             // gap above the main textbox
         var _sec_portrait_scale = 0.55;     // shrink whatever portrait sprite is passed in
-        var _sec_y = textbox_y + textbox_height + _sec_margin_y;
+        var _sec_h = string_height("Ay") * _sec_scale; // rough line height for the aside text
+        var _sec_y = textbox_y - _sec_h - _sec_margin_y;
         var _sec_x = textbox_x + border + _sec_margin_x;
 
         if secondary_portrait_spr[page] != noone
