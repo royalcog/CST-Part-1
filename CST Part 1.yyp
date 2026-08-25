@@ -581,6 +581,7 @@
     {"id":{"name":"spr_kris_left","path":"sprites/spr_kris_left/spr_kris_left.yy",},},
     {"id":{"name":"spr_kris_right","path":"sprites/spr_kris_right/spr_kris_right.yy",},},
     {"id":{"name":"spr_kris_up","path":"sprites/spr_kris_up/spr_kris_up.yy",},},
+    {"id":{"name":"spr_lancer_down","path":"sprites/spr_lancer_down/spr_lancer_down.yy",},},
     {"id":{"name":"spr_lancer_up","path":"sprites/spr_lancer_up/spr_lancer_up.yy",},},
     {"id":{"name":"spr_lantern","path":"sprites/spr_lantern/spr_lantern.yy",},},
     {"id":{"name":"spr_menu","path":"sprites/spr_menu/spr_menu.yy",},},

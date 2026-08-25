@@ -13,9 +13,35 @@ function scr_game_text(_text_id)
 	switch (_text_id)
 	{
 		case "self_1":
-			scr_text("* Where... are we???", "lancer");		
+			scr_text("* Hey, Lancer!|* How's Castle Town been since we left?", "susie", 7);		
+				scr_char_move_on_page(obj_susie, spr_susie_walk_up, true, 0, -20, .2, 90);
+				scr_char_move_on_page(obj_susie, spr_susie_walk_up, false, 0, 0, 0, 0);
 		break;
-			
+/*
+Case 1:
+(Susie walks in)
+Susie: Hey, Lancer! How’s Castle Town been since we left?
+Lancer: Incredible! (smug)
+Susie: ...Okay.
+Susie: How’s
+Lancer: Incredible! (smug)
+Susie: ...
+Susie: Hey, um...
+Susie: I know it’s probably not the BEST idea, but...
+Susie: I was thinking you should, uh...
+Lancer: Yes?
+Susie: You should probably go... talk to your dad? See how he’s doing?
+Susie: With everything that’s happened the last few days, we kinda forget he’s still in that cell, so...
+Susie: Maybe go do that? Or not?
+Susie: Uh...
+Susie: Yeah.
+Susie: Anyways, I need to go talk to Ralsei about something, so...
+Susie: See you later?
+Lancer: You bet!
+Susie: Cool.
+(Susie leaves)
+
+*/
 
 		/*array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {
 			type: "tenna_battle_intro"

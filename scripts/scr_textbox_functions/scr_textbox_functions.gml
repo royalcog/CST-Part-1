@@ -994,6 +994,8 @@ function scr_text(_text, _character = noone, _index = noone, _mode = noone, _fre
 			case "lancer":
 				snd[global.page_number] = snd_lancer;
 				scr_text_color_default(make_colour_rgb(85, 133, 189));
+			break;
+			
 			case "empty":
 			    // no speaker_sprite set, text stays at default position
 				snd[global.page_number] = snd_empty;
