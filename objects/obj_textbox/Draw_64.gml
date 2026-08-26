@@ -194,15 +194,17 @@ if global.speaker_sprite[page] != noone
     var _portrait_x = textbox_x + global.portrait_x_offset[page] + 10;
     var _base_scale = ((textbox_height - border * 2) / sprite_get_height(_portrait_spr)) * 0.9;
     var _draw_scale = _base_scale;
+    var _portrait_y_adjust = 0; // tune this to nudge the main portrait up(-)/down(+)
 
     if (_portrait_spr == spr_lancer_dialogue)
     {
         _draw_scale *= 1.15; // bump only the visual size — position math below still uses _base_scale
+		_portrait_y_adjust = -8;
     }
 
     var _portrait_w = sprite_get_width(_portrait_spr);
     draw_sprite_ext(_portrait_spr, global.speaker_image[page], _portrait_x + _portrait_w * _base_scale / 2,
-        textbox_y + border + 8, global.speaker_side[page] * _draw_scale, _draw_scale, 0, c_white, 1);
+        textbox_y + border + 8 + _portrait_y_adjust, global.speaker_side[page] * _draw_scale, _draw_scale, 0, c_white, 1);
 }
 
 //options
@@ -388,7 +390,7 @@ if secondary_text[page] != ""
         if secondary_portrait_spr[page] != noone
 		{
 		    var _sec_portrait_w = sprite_get_width(secondary_portrait_spr[page]) * _sec_base_portrait_scale;
-		    var _sec_portrait_y_adjust = -12; // nudge up to visually match the text line (tune to taste)
+		    var _sec_portrait_y_adjust = -60; // nudge up to visually match the text line (tune to taste)
 		    draw_sprite_ext(secondary_portrait_spr[page], secondary_image[page], _sec_x + _sec_portrait_w / 2,
 		        _sec_y + _sec_portrait_y_adjust, secondary_side[page] * _sec_draw_portrait_scale,
 		        _sec_draw_portrait_scale, 0, c_white, 1);
