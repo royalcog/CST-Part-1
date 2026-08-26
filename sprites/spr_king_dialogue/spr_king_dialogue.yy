@@ -36,7 +36,7 @@
   ],
   "name":"spr_king_dialogue",
   "nineSlice":null,
-  "origin":0,
+  "origin":1,
   "parent":{
     "name":"Dialogue Portraits",
     "path":"folders/Dialogue/Dialogue Portraits.yy",
@@ -127,7 +127,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":0,
+    "xorigin":21,
     "yorigin":0,
   },
   "swatchColours":null,

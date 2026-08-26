@@ -45,9 +45,78 @@ function scr_game_text(_text_id)
 		
 		case "self_2":
 			scr_fade_warp_with_music(rm_one, 240, sng_empty);
+
+		break;
+		
+		case "self_3":
+			scr_text("* ...", "king", 5);
+			scr_text("* Footsteps.", "king", 0);
+			scr_char_move_after_textbox(obj_lancer, spr_lancer_right, false, 30, 0, .2, 100);
 		break;
 /*
-
+Lancer: Hi Dad!
+King: ...
+King: My son.
+Lancer: Just checking in on you!
+King: Why have you not come to visit sooner?
+Lancer: Adventuring!
+King: ...With the Lightners, I presume?
+Lancer: Yeah! They’re great!
+King: ...
+Lancer: I don’t even do any of the walking! It’s...
+Lancer: Incredib (smug)
+King: Enough.
+Lancer: ...
+King: You still do not get it, do you?
+King: These ‘heroes’ you spend time with. They are not ‘heroes’.
+King: I wouldn’t even classify them as ‘good’.
+Lancer: What... What do you mean?
+King: They are poisoning your mind, my son.
+King: Promises of freedom and friendship just so they can use them in their own sick plans.
+King: ...
+King: I really wish you came to see me sooner.
+Lancer: I thought you were gonna be upset when I saved the Lighters.
+Lancer: And when we...
+King: And I was. But now I am not.
+King: And unlike the heroes, I HAVE changed for good.
+King: While they have been off sealing other worlds...
+King: I have been here. Self-reflecting on my actions.
+King: I have seen the error of my ways, and what my actions have inflicted upon my people.
+King: And for that, I am sorry.
+Lancer: That’s great, Dad! Let me go tell Susie
+King: I need a favor from you, Lancer.
+Lancer: ...Yeah?
+King: I need you to release me from here.
+Lancer: ...
+Lancer: I don’t know if I can do that, Dad
+King: Listen to my words.
+King: The heroes are planning something. 
+King: They keep bringing up evil parts of their plan whenever they come to taunt me in this prison.
+King: I understand you are friends with them now, so I will not force you to fight with them.
+Lancer: But won’t you
+King: I will not engage either. Do not worry.
+Lancer: ...
+Lancer: I don’t know, Dad.
+Lancer: How do I know you won’t just attack them when you get out?
+King: I give you my word, Lancer.
+Lancer: ...
+Lancer: Dad, you were gonna...
+King: As I told the heroes, it was a bluff so they would concede. I would have never harmed you.
+Lancer: You...
+King: ...
+King: If you are truly worried about what I will do,
+King: At least let me out briefly.
+King: Let me stretch my legs around here a little.
+King: Then you may return in a bit and I will go into my cell without problem.
+Lancer: I think I can do that! Let me go ask
+King: Do not ask the Lightners. They will refuse my request.
+King: I raised you well, my boy. You can make your own decision about this.
+Lancer: I...
+Lancer: Just for a few minutes?
+King: Just a few.
+Lancer: ...
+Lancer: Okay.
+(Lancer opens the cell)
 */
 
 		/*array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {
