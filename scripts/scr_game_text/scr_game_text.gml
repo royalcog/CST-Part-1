@@ -14,7 +14,6 @@ function scr_game_text(_text_id)
 	{
 		case "self_1":
 			scr_text("* Hey, Lancer!|* How's Castle Town been since we left?", "susie", 7);	
-				scr_fade_out_to_black(c_black, true, 0);
 				scr_char_move_on_page(obj_susie, spr_susie_walk_up, true, 0, -20, .2, 90);
 				scr_obj_sprite_on_page_delayed(obj_lancer, spr_lancer_down, false, 0, 45);
 				scr_obj_sprite_on_page_delayed(obj_susie, spr_susie_walk_up, false, 0, 90);
@@ -171,33 +170,76 @@ function scr_game_text(_text_id)
 		break;
 		
 		case "self_9":
-			scr_text("* Here!|* I got it from Girldad!", "lancer", 0);
+			scr_text("* Here!|* I got it from Girldad!", "lancer", 3);
 				scr_obj_sprite_on_page(obj_lancer, spr_lancer_right, false);
 				scr_snd_on_page(snd_item, 1);
 			scr_text("* Thank you.", "king", 0);
 			scr_text("* I am very proud of your decision-making skills.", "king", 0);
-			scr_text("* Wow, a compliment!|* I guess you have changed!", "lancer", 0);
+			scr_text("* Wow, a compliment!|* I guess you have changed!", "lancer", 2);
 			scr_text("* As I said.", "king", 0);
-			scr_text("* Okay, I'll be outside.|* Enjoy your free time!", "lancer", 0);
-			scr_text("* I will, thank you.", "king", 0);
+			scr_text("* Okay, I'll be outside.|* Enjoy your free time!", "lancer", 1);
+			scr_text("* I will, thank you.", "king", 7);
 				scr_char_move_after_textbox(obj_lancer, spr_lancer_left, false, -30, 0, .2, 100);
 		break;
 		
 		case "self_10":
-			scr_text("* ...", "king", 5);
-			scr_text("* If only he knew.", "king", 0);
-			scr_text("* If he knew just how wrong he is.", "king", 4);
-			scr_text("* ...", "king", 5);
-			scr_text("* My son.", "king", 0);
-				scr_fade_out_to_black(c_black, true, 0);
+		    scr_text("* ...", "king", 5);
+		    scr_text("* If only he knew.", "king", 0);
+		    scr_text("* If he knew just how wrong he is.", "king", 4);
+		    scr_text("* ...", "king", 5);
+		    scr_text("* My son.", "king", 0);
+		        scr_fade_after_textbox(c_black, true, 0, true);
+		break;
+		
+		case "self_11":
+			audio_play_sound(snd_phone_ring, 1, false);
+		break;
+		
+		case "self_12":
+			scr_text("* Hello?", "king");
+				scr_set_var_on_page(obj_textbox, "hide_box_sprite", true);
+			scr_text("* ...", "king");
+			scr_text("* Yes, I know you have somewhere to be, but", "king");
+			scr_text("*...", "king");
+			scr_text("* I do not wish to impede on your time.", "king");
+			scr_text("* All I request is for you to help me with something.", "king");
+			scr_text("* As your humble servant, I believe I deserve", "king");
+			scr_text("* ...", "king");
+			scr_text("* I HOPE to deserve such an honor from you.", "king");
+			scr_text("* ...", "king");
+			scr_text("* Thank you.", "king");
+			scr_text("* I will be here when you arrive.|* In my cell.", "king");
+			scr_text("* Do you", "king");
+			scr_text("* ...", "king");
+			scr_text("* I see.", "king");
+			scr_text("* I just need to", "king");
+			scr_text("* (Click...)", "noone");
+			scr_text("* ...", "king");
+			scr_text("* Hello?", "king");
+			scr_text("* ...", "king");
 		break;
 /*
+King: Hello?
 King: ...
-King: If only he knew.
-King: If he knew just how wrong he is.
+King: Yes, I know you have somewhere to be, but
 King: ...
-King: My son.
-(King turns around and calls on the phone)
+King: I do not wish to impede on your time.
+King: All I request is for you to help me with something.
+King: As your humble servant, I believe I deserve
+King: ...
+King: I HOPE to deserve such an honor from you.
+King: ...
+King: Thank you.
+King: I will be here when you arrive. In my cell.
+King: Do you
+King: ...
+King: I see.
+King: I will make the necessary preparations.
+King: I just need to
+(Click)
+King: ...
+King: Hello?
+King: ...
 */
 
 		/*array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {

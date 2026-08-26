@@ -468,6 +468,8 @@ if (processing_queue)
 		        _fader.fade_color = _entry.fade_color;
 		        _fader.fade_back_same_room = _entry.fade_back_same_room;
 		        _fader.flash_wait_duration = _entry.wait_duration;
+				_fader.hold_black = variable_struct_exists(_entry, "hold_black") ? _entry.hold_black : false;
+				
 		    }
 		}
 		else if _entry.type == "spawn_fade_in"

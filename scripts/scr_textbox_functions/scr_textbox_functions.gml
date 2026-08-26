@@ -626,7 +626,7 @@ function scr_fade_out_to_black(_color = c_black, _same_room = false, _wait = 0) 
     }
 }
 
-function scr_fade_after_textbox(_color = c_black, _same_room = false, _wait = 0) {
+function scr_fade_after_textbox(_color = c_black, _same_room = false, _wait = 0, _hold_black = false) {
     if !instance_exists(obj_cutscenehandler_midfightattacks) exit;
     
     array_push(obj_cutscenehandler_midfightattacks.pending_delayed_queue, {
@@ -635,6 +635,7 @@ function scr_fade_after_textbox(_color = c_black, _same_room = false, _wait = 0)
         fade_color: _color,
         fade_back_same_room: _same_room,
         wait_duration: _wait,
+        hold_black: _hold_black,
         movement_duration: 0,
         delay: 0
     });
