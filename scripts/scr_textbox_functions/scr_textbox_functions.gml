@@ -43,6 +43,7 @@ function scr_set_defaults_for_text()
 	secondary_side[global.page_number] = 1;
 	secondary_col[global.page_number] = c_white;
 	secondary_snd[global.page_number] = noone;
+	hide_face[global.page_number] = false;
 }
 
 /// @param text - the aside/mini-textbox line (no border, drawn under the main box)
@@ -1072,6 +1073,11 @@ function scr_layer_show_after_textbox(_layer_name, _snd = noone, _snd_gain = 1)
 function scr_layer_show_after_textbox_delayed(_layer_name, _delay, _snd = noone, _snd_gain = 1)
 {
     scr_layer_hide_after_textbox_delayed(_layer_name, false, _delay, _snd, _snd_gain);
+}
+
+function scr_text_hide_face(_bool)
+{
+    obj_textbox.hide_face[global.page_number - 1] = _bool;
 }
 
 /// @param text

@@ -188,7 +188,7 @@ if (!hide_box_sprite)
         textbox_width/txtb_spr_w, textbox_height/txtb_spr_h, 0, c_white, 1);
 }
 
-if global.speaker_sprite[page] != noone
+if global.speaker_sprite[page] != noone && !hide_face[page]
 {
     var _portrait_spr = global.speaker_sprite[page];
     var _portrait_x = textbox_x + global.portrait_x_offset[page] + 10;
@@ -263,6 +263,7 @@ if (center_text)
 
 // draw the text
 var _max_char = text_cutoff[page] != noone ? min(draw_char, text_cutoff[page]) : draw_char;
+var _text_x_offset_draw = hide_face[page] ? 5 : text_x_offset[page];
 for (var c = 0; c < _max_char; c++)
 {
     var _float_y = 0;
@@ -292,7 +293,7 @@ for (var c = 0; c < _max_char; c++)
     if char[c, page] != "|" && char[c, page] != "^" 
     {
         draw_text_transformed_color(
-            textbox_x + border + text_x_offset[page] + (char_x[c, page] - textbox_x - border - text_x_offset[page]) * text_scale + _shake_x + 5,
+            textbox_x + border + _text_x_offset_draw + (char_x[c, page] - textbox_x - border - text_x_offset[page]) * text_scale + _shake_x + 5,
             textbox_y + border + (char_y[c, page] - textbox_y - border) * text_scale + _float_y + _shake_y + 3,
             char[c, page], text_scale, text_scale, 0,
             col_1[c, page], col_2[c, page], col_3[c, page], col_4[c, page], 1);

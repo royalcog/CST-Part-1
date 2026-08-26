@@ -197,6 +197,7 @@ function scr_game_text(_text_id)
 		
 		case "self_12":
 			scr_text("* Hello?", "king");
+				scr_text_hide_face(true); 
 				scr_set_var_on_page(obj_textbox, "hide_box_sprite", true);
 			scr_text("* ...", "king");
 			scr_text("* Yes, I know you have somewhere to be, but", "king");
