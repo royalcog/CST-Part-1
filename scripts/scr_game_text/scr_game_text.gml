@@ -78,7 +78,7 @@ function scr_game_text(_text_id)
 			scr_text("* What... What do you mean?", "lancer", 7);
 			scr_text("* They are poisoning your mind, my son.", "king", 5);
 				scr_obj_sprite_on_page(obj_king, spr_king_sulk_left, false);
-			scr_text("* Promises of freedom and friendship just so they can use you in their own sick plans.", "king", 0);
+			scr_text("* Promises of freedom and friendship just so they can use you for their gain.", "king", 0);
 			scr_text("* ...", "king", 5);
 			scr_text("* I really wish you came to see me sooner.", "king", 1);
 			scr_text("* I thought you were gonna be upset when I saved the Lightners.", "lancer", 7);
@@ -87,7 +87,7 @@ function scr_game_text(_text_id)
 			scr_text("* And unlike the heroes, I HAVE changed for good.", "king", 7);
 			scr_text("* While they have been off sealing other worlds...", "king", 5);
 			scr_text("* I have been here.|* Self-reflecting on my actions.", "king", 2);
-			scr_text("* I have seen the error of my ways, and what my actions have inflicted upon my people.", "king", 1);
+			scr_text("* I have seen the error of my ways, and what my actions have inflicted.", "king", 1);
 			scr_text("* And for that, I am sorry.", "king", 3);
 			scr_text("* That's great, Dad! Let me go tell Susie", "lancer", 3);
 				scr_obj_sprite_on_page(obj_lancer, spr_lancer_right, false);
@@ -119,7 +119,7 @@ function scr_game_text(_text_id)
 			scr_text("* ...", "king", 5);
 			scr_text("* If you are truly worried about what I will do,", "king", 5);
 			scr_text("* At least let me out briefly.", "king", 1);
-			scr_text("* Let me stretch my legs around here a little.", "king", 2);
+			scr_text("* Let me stretch my legs around here for a while.", "king", 2);
 			scr_text("* Then you may return and I will go into my cell without problem.", "king", 1);
 			scr_text("* I think I can do that! Let me go ask", "lancer", 2);
 				scr_obj_sprite_on_page(obj_lancer, spr_lancer_right, false);

@@ -193,6 +193,12 @@ if global.speaker_sprite[page] != noone
     var _portrait_spr = global.speaker_sprite[page];
     var _portrait_x = textbox_x + global.portrait_x_offset[page] + 10;
     var _scale = ((textbox_height - border * 2) / sprite_get_height(_portrait_spr)) * 0.9;
+
+    if (_portrait_spr == spr_lancer_dialogue)
+    {
+        _scale *= 1.15; // tune this — 1.15 = 15% bigger
+    }
+
     var _portrait_w = sprite_get_width(_portrait_spr);
     draw_sprite_ext(_portrait_spr, global.speaker_image[page], _portrait_x + _portrait_w * _scale / 2,
         textbox_y + border + 8, global.speaker_side[page] * _scale, _scale, 0, c_white, 1);
@@ -366,6 +372,10 @@ if secondary_text[page] != ""
         var _sec_margin_x = 14;             // left/right padding around the aside
         var _sec_margin_y = 10;             // inset from the main box's bottom edge
         var _sec_portrait_scale = 0.7;      // slightly bigger than before (was 0.55)
+		if (secondary_portrait_spr[page] == spr_lancer_dialogue)
+		{
+		    _sec_portrait_scale *= 1.15;
+		}
         var _sec_h = string_height("Ay") * _sec_scale; // shared line height for portrait + text
         var _sec_anchor_x = textbox_x + textbox_width - 220; // start point, inset from the box's right edge — tune to taste
         var _sec_y_adjust = -20; // move the whole mini-box (portrait + text) up — tune to taste
