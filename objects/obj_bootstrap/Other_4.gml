@@ -27,6 +27,11 @@ if (!variable_global_exists("dbg_friend_offy"))
 
 
 // General Globals
+if (!variable_global_exists("hide_face"))
+{
+    global.hide_face = false;
+}
+
 if (!variable_global_exists("DEBUG_BARRAGE"))
 {
     global.DEBUG_BARRAGE = false;

@@ -1077,7 +1077,7 @@ function scr_layer_show_after_textbox_delayed(_layer_name, _delay, _snd = noone,
 
 function scr_text_hide_face(_bool)
 {
-    obj_textbox.hide_face[global.page_number - 1] = _bool;
+    global.hide_face = _bool;
 }
 
 /// @param text

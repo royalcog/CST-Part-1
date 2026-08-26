@@ -605,9 +605,9 @@ if after_queue_armed && array_length(after_textbox_delayed_queue) > 0
 			        _fader.fade_color = _entry.fade_color;
 			        _fader.fade_back_same_room = _entry.fade_back_same_room;
 			        _fader.flash_wait_duration = _entry.wait_duration;
+			        _fader.hold_black = variable_struct_exists(_entry, "hold_black") ? _entry.hold_black : false;   // <-- was missing
 			    }
-    
-			    // Delete it immediately so the queue clears and lets you move to the next case!
+
 			    array_delete(after_textbox_delayed_queue, i, 1);
 			    continue; 
 			}
