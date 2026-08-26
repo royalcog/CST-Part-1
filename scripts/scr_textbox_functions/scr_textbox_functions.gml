@@ -954,6 +954,125 @@ function scr_obj_spawn_fade_in_after_textbox(_obj, _x, _y, _layer, _fade_speed =
     });
 }
 
+/// @param layer_name - the room layer's name (string), e.g. "Instances_Foreground"
+/// @param [hide] - true to hide the layer, false to show it (default true)
+/// @param [snd] - optional sound to play the moment the layer toggles
+/// @param [snd_gain] - gain for that sound (default 1)
+/// Fires as soon as the given page is reached (no delay).
+function scr_layer_hide_on_page(_layer_name, _hide = true, _snd = noone, _snd_gain = 1)
+{
+    if !instance_exists(obj_cutscenehandler_midfightattacks) exit;
+    array_push(obj_cutscenehandler_midfightattacks.sprite_queue, {
+        type: "layer_visible",
+        layer_name: _layer_name,
+        visible: !_hide,
+        page: global.page_number - 1,
+        snd: _snd,
+        snd_gain: _snd_gain
+    });
+}
+
+/// @param layer_name - the room layer's name (string)
+/// @param hide - true to hide the layer, false to show it
+/// @param delay - frames to wait (while the matching page is active) before toggling
+/// @param [snd] - optional sound to play the moment the layer toggles
+/// @param [snd_gain] - gain for that sound (default 1)
+function scr_layer_hide_on_page_delayed(_layer_name, _hide, _delay, _snd = noone, _snd_gain = 1)
+{
+    if !instance_exists(obj_cutscenehandler_midfightattacks) exit;
+    array_push(obj_cutscenehandler_midfightattacks.sprite_queue_delayed, {
+        type: "layer_visible",
+        layer_name: _layer_name,
+        visible: !_hide,
+        delay: _delay,
+        page: global.page_number - 1,
+        snd: _snd,
+        snd_gain: _snd_gain
+    });
+}
+
+/// @param layer_name - the room layer's name (string)
+/// @param [hide] - true to hide the layer, false to show it (default true)
+/// @param [snd] - optional sound to play the moment the layer toggles
+/// @param [snd_gain] - gain for that sound (default 1)
+/// Fires as soon as the textbox fully closes (no delay).
+function scr_layer_hide_after_textbox(_layer_name, _hide = true, _snd = noone, _snd_gain = 1)
+{
+    if !instance_exists(obj_cutscenehandler_midfightattacks) exit;
+    array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {
+        type: "layer_visible",
+        layer_name: _layer_name,
+        visible: !_hide,
+        snd: _snd,
+        snd_gain: _snd_gain
+    });
+}
+
+/// @param layer_name - the room layer's name (string)
+/// @param hide - true to hide the layer, false to show it
+/// @param delay - frames to wait after the textbox closes before toggling (chains after any movement(s) already queued for this batch, same as scr_char_move_after_textbox)
+/// @param [snd] - optional sound to play the moment the layer toggles
+/// @param [snd_gain] - gain for that sound (default 1)
+function scr_layer_hide_after_textbox_delayed(_layer_name, _hide, _delay, _snd = noone, _snd_gain = 1)
+{
+    var _cutscene_obj = obj_cutscenehandler_midfightattacks;
+    if !instance_exists(_cutscene_obj) exit;
+
+    var _calculated_delay = _delay;
+    for (var i = 0; i < array_length(_cutscene_obj.pending_delayed_queue); i++)
+    {
+        if (variable_struct_exists(_cutscene_obj.pending_delayed_queue[i], "movement_duration"))
+        {
+            _calculated_delay += _cutscene_obj.pending_delayed_queue[i].movement_duration;
+        }
+    }
+
+    array_push(_cutscene_obj.pending_delayed_queue, {
+        is_layer_toggle: true,
+        layer_name: _layer_name,
+        visible: !_hide,
+        delay: _calculated_delay,
+        snd: _snd,
+        snd_gain: _snd_gain
+    });
+}
+
+/// @param layer_name - the room layer's name (string)
+/// @param [snd] - optional sound to play the moment the layer reappears
+/// @param [snd_gain] - gain for that sound (default 1)
+/// Fires as soon as the given page is reached (no delay). Same as scr_layer_hide_on_page(_layer_name, false, ...).
+function scr_layer_show_on_page(_layer_name, _snd = noone, _snd_gain = 1)
+{
+    scr_layer_hide_on_page(_layer_name, false, _snd, _snd_gain);
+}
+
+/// @param layer_name - the room layer's name (string)
+/// @param delay - frames to wait (while the matching page is active) before reappearing
+/// @param [snd] - optional sound to play the moment the layer reappears
+/// @param [snd_gain] - gain for that sound (default 1)
+function scr_layer_show_on_page_delayed(_layer_name, _delay, _snd = noone, _snd_gain = 1)
+{
+    scr_layer_hide_on_page_delayed(_layer_name, false, _delay, _snd, _snd_gain);
+}
+
+/// @param layer_name - the room layer's name (string)
+/// @param [snd] - optional sound to play the moment the layer reappears
+/// @param [snd_gain] - gain for that sound (default 1)
+/// Fires as soon as the textbox fully closes (no delay). Same as scr_layer_hide_after_textbox(_layer_name, false, ...).
+function scr_layer_show_after_textbox(_layer_name, _snd = noone, _snd_gain = 1)
+{
+    scr_layer_hide_after_textbox(_layer_name, false, _snd, _snd_gain);
+}
+
+/// @param layer_name - the room layer's name (string)
+/// @param delay - frames to wait after the textbox closes before reappearing (chains after any movement(s) already queued for this batch)
+/// @param [snd] - optional sound to play the moment the layer reappears
+/// @param [snd_gain] - gain for that sound (default 1)
+function scr_layer_show_after_textbox_delayed(_layer_name, _delay, _snd = noone, _snd_gain = 1)
+{
+    scr_layer_hide_after_textbox_delayed(_layer_name, false, _delay, _snd, _snd_gain);
+}
+
 /// @param text
 /// @param [character]
 /// @param [index]

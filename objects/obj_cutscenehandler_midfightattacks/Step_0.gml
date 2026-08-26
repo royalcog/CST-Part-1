@@ -102,6 +102,19 @@ if instance_exists(obj_textbox)
 			    audio_play_sound(_entry.snd, 1, false, _entry.snd_gain);
 			    array_delete(sprite_queue, i, 1);
 			}
+			else if _entry.type == "layer_visible"
+			{
+			    var _lyr = layer_get_id(_entry.layer_name);
+			    if (_lyr != -1)
+			    {
+			        layer_set_visible(_lyr, _entry.visible);
+			    }
+			    if (variable_struct_exists(_entry, "snd") && _entry.snd != noone)
+			    {
+			        audio_play_sound(_entry.snd, 1, false, _entry.snd_gain);
+			    }
+			    array_delete(sprite_queue, i, 1);
+			}
         }
     }
 }
@@ -117,7 +130,19 @@ if instance_exists(obj_textbox)
             _entry.delay -= 1;
             if (_entry.delay <= 0)
             {
-                if (instance_exists(_entry.obj))
+                if (variable_struct_exists(_entry, "type") && _entry.type == "layer_visible")
+				{
+				    var _lyr = layer_get_id(_entry.layer_name);
+				    if (_lyr != -1)
+				    {
+				        layer_set_visible(_lyr, _entry.visible);
+				    }
+				    if (variable_struct_exists(_entry, "snd") && _entry.snd != noone)
+				    {
+				        audio_play_sound(_entry.snd, 1, false, _entry.snd_gain);
+				    }
+				}
+                else if (instance_exists(_entry.obj))
 				{
 				    _entry.obj.sprite_index = _entry.sprite;
 				    _entry.obj.image_index = _entry.image;
@@ -187,10 +212,22 @@ if (processing_queue)
             }
         }
         else if _entry.type == "sound"
-        {
-            if _entry.snd != noone
-                audio_play_sound(_entry.snd, 1, false, _entry.snd_gain);
-        }
+		{
+		    if _entry.snd != noone
+		        audio_play_sound(_entry.snd, 1, false, _entry.snd_gain);
+		}
+		else if _entry.type == "layer_visible"
+		{
+		    var _lyr = layer_get_id(_entry.layer_name);
+		    if (_lyr != -1)
+		    {
+		        layer_set_visible(_lyr, _entry.visible);
+		    }
+		    if (variable_struct_exists(_entry, "snd") && _entry.snd != noone)
+		    {
+		        audio_play_sound(_entry.snd, 1, false, _entry.snd_gain);
+		    }
+		}
         else if _entry.type == "tenna_shake"
         {
             scr_tenna_shake(_entry.state);
@@ -490,15 +527,30 @@ if after_queue_armed && array_length(after_textbox_delayed_queue) > 0
             }
             
             if (variable_struct_exists(_entry, "is_sound_stop") && _entry.is_sound_stop)
-            {
-                if (audio_is_playing(_entry.sound_inst))
-                {
-                    audio_stop_sound(_entry.sound_inst);
-                }
-                array_delete(after_textbox_delayed_queue, i, 1);
-                continue;
-            }
-            
+			{
+			    if (audio_is_playing(_entry.sound_inst))
+			    {
+			        audio_stop_sound(_entry.sound_inst);
+			    }
+			    array_delete(after_textbox_delayed_queue, i, 1);
+			    continue;
+			}
+
+			if (variable_struct_exists(_entry, "is_layer_toggle") && _entry.is_layer_toggle)
+			{
+			    var _lyr = layer_get_id(_entry.layer_name);
+			    if (_lyr != -1)
+			    {
+			        layer_set_visible(_lyr, _entry.visible);
+			    }
+			    if (variable_struct_exists(_entry, "snd") && _entry.snd != noone)
+			    {
+			        audio_play_sound(_entry.snd, 1, false, _entry.snd_gain);
+			    }
+			    array_delete(after_textbox_delayed_queue, i, 1);
+			    continue;
+			}
+			
             if (variable_struct_exists(_entry, "is_teleport") && _entry.is_teleport)
             {
                 if (instance_exists(_entry.obj))

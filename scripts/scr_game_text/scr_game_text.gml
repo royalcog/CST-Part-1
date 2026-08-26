@@ -29,7 +29,7 @@ function scr_game_text(_text_id)
 			scr_text("* I was thinking you should, uh...", "susie", 10);
 			scr_text("* Yes?", "lancer", 2);	
 			scr_text("* You should probably go... talk to your dad?|* See how he's doing?", "susie", 3);
-			scr_text("* With everything that's happened, we kinda forgot he's still here, so...", "susie", 12);
+			scr_text("* With everything that's happened, we kinda forget he's still here, so...", "susie", 12);
 			scr_text("* Maybe go do that?|* Or not?", "susie", 20);
 			scr_text("* Do you wanna come?", "lancer", 1);
 			scr_text("* Uh...", "susie", 25);
@@ -39,6 +39,7 @@ function scr_game_text(_text_id)
 			scr_text("* You bet!", "lancer", 2);
 			scr_text("* Cool.", "susie", 2);
 				scr_char_move_after_textbox(obj_susie, spr_susie_walk_right, true, 3, 0, .8, 20);
+				scr_obj_sprite_after_textbox_delayed(obj_lancer, spr_lancer_up, false, 30);
 				scr_char_move_after_textbox(obj_susie, spr_susie_walk_up, true, 0, -20, .3, 90);
 				scr_obj_sprite_after_textbox_delayed(obj_susie, spr_invischaracter, false, 150);
 		break;
@@ -53,70 +54,105 @@ function scr_game_text(_text_id)
 			scr_text("* Footsteps.", "king", 0);
 			scr_char_move_after_textbox(obj_lancer, spr_lancer_right, false, 30, 0, .2, 100);
 		break;
+		
+		case "self_4":
+			scr_text("* Hi Dad!", "lancer", 3);
+			scr_text("* ...", "king", 5);
+			scr_text("* My son.", "king", 0);
+			scr_text("* Just checking in on you!", "lancer", 2);
+			scr_text("* Why have you not come to visit sooner?", "king", 5);
+			scr_text("* Adventuring!", "lancer", 1);
+			scr_text("* ...With the Lightners, I presume?", "king", 5);
+			scr_text("* Yeah!|* They're great!", "lancer", 2);
+			scr_text("* ...", "king", 5);
+			scr_text("* I don't even do any of the walking! It's...", "lancer", 1);
+			scr_text("* Incredib", "lancer", 8);
+				scr_text_slow(.4);
+				scr_text_cutoff_skip(10);
+			scr_text("* Enough.", "king", 5);
+			scr_text("* ...", "lancer", 5);
+				scr_obj_sprite_on_page(obj_lancer, spr_lancer_right_sad, false);
+			scr_text("* You still do not get it, do you?", "king", 0);
+			scr_text("* These 'heroes' you spend time with.|* They are not 'heroes'.", "king", 5);
+			scr_text("* I wouldn't even classify them as 'good'.", "king", 4);
+			scr_text("* What... What do you mean?", "lancer", 7);
+			scr_text("* They are poisoning your mind, my son.", "king", 5);
+				scr_obj_sprite_on_page(obj_king, spr_king_sulk_left, false);
+			scr_text("* Promises of freedom and friendship just so they can use you in their own sick plans.", "king", 0);
+			scr_text("* ...", "king", 5);
+			scr_text("* I really wish you came to see me sooner.", "king", 1);
+			scr_text("* I thought you were gonna be upset when I saved the Lightners.", "lancer", 7);
+			scr_text("* And when we...", "lancer", 10);
+			scr_text("* And I was.|* But now I am not.", "king", 2);
+			scr_text("* And unlike the heroes, I HAVE changed for good.", "king", 7);
+			scr_text("* While they have been off sealing other worlds...", "king", 5);
+			scr_text("* I have been here.|* Self-reflecting on my actions.", "king", 2);
+			scr_text("* I have seen the error of my ways, and what my actions have inflicted upon my people.", "king", 1);
+			scr_text("* And for that, I am sorry.", "king", 3);
+			scr_text("* That's great, Dad! Let me go tell Susie", "lancer", 3);
+				scr_obj_sprite_on_page(obj_lancer, spr_lancer_right, false);
+				scr_text_cutoff_skip(41);
+			scr_text("* I need a favor from you, Lancer.", "king", 5);
+			scr_text("* Yeah?", "lancer", 0);
+			scr_text("* I need you to release me from here.", "king", 0);
+			scr_text("* ...", "lancer", 4);
+				scr_obj_sprite_on_page(obj_lancer, spr_lancer_right_sad, false);
+			scr_text("* I don't know if I can do that, Dad", "lancer", 12);
+				scr_text_cutoff_skip(36);
+			scr_text("* Listen to my words.", "king", 5);
+			scr_text("* The heroes are planning something.", "king", 10);
+				scr_obj_sprite_on_page(obj_king, spr_king_sulk, false);
+			scr_text("* I can sense their deception whenever they come to taunt me in this prison.", "king", 11);
+			scr_text("* I understand you are friends with them now, so I will not force you to fight them.", "king", 5);
+			scr_text("* But won't you", "lancer", 7);
+				scr_text_cutoff_skip(15);
+			scr_text("* I will not engage either.|* Do not worry.", "king", 0);
+			scr_text("* ...", "lancer", 11);
+			scr_text("* I don't know, Dad.", "lancer", 10);
+			scr_text("* How do I know you won't just attack them when you get out?", "lancer", 12);
+			scr_text("* I give you my word, Lancer.", "king", 2);
+			scr_text("* ...", "lancer", 5);
+			scr_text("* Dad, you were gonna...", "lancer", 10);
+			scr_text("* As I told the heroes, it was a bluff so they would concede.", "king", 5);
+			scr_text("* I would have never harmed you.", "king", 3);
+			scr_text("* You...", "lancer", 10);
+			scr_text("* ...", "king", 5);
+			scr_text("* If you are truly worried about what I will do,", "king", 5);
+			scr_text("* At least let me out briefly.", "king", 1);
+			scr_text("* Let me stretch my legs around here a little.", "king", 2);
+			scr_text("* Then you may return and I will go into my cell without problem.", "king", 1);
+			scr_text("* I think I can do that! Let me go ask", "lancer", 2);
+				scr_obj_sprite_on_page(obj_lancer, spr_lancer_right, false);
+				scr_text_cutoff_skip(38);
+			scr_text("* Do not ask the Lightners.|* They will refuse my request.", "king", 6);
+				scr_obj_sprite_on_page(obj_lancer, spr_lancer_right_sad, false);
+			scr_text("* I raised you well, my boy.|* You can make your own decision on this.", "king", 0);
+				scr_obj_sprite_on_page(obj_king, spr_king_sulk_left, false);
+			scr_text("* I...", "lancer", 4);
+			scr_text("* Just for a few minutes?", "lancer", 7);
+			scr_text("* Just a few.", "king", 2);
+			scr_text("* ...", "lancer", 6);
+				scr_obj_sprite_on_page(obj_lancer, spr_lancer_left_sad, false);
+			scr_text("* Okay.", "lancer", 0);
+				scr_obj_sprite_on_page(obj_lancer, spr_lancer_right, false);
+				scr_char_move_after_textbox(obj_lancer, spr_lancer_left, false, -30, 0, .2, 100);
+				scr_layer_hide_after_textbox_delayed("Tiles_4", true, 100, snd_impact);
+		break;
+		
+		case "self_5":
+			scr_char_move_after_textbox(obj_lancer, spr_lancer_right, false, 30, 0, .2, 100);
+		break;
+		
+		case "self_6":
+			
+		break;
 /*
-Lancer: Hi Dad!
-King: ...
-King: My son.
-Lancer: Just checking in on you!
-King: Why have you not come to visit sooner?
-Lancer: Adventuring!
-King: ...With the Lightners, I presume?
-Lancer: Yeah! They’re great!
-King: ...
-Lancer: I don’t even do any of the walking! It’s...
-Lancer: Incredib (smug)
-King: Enough.
-Lancer: ...
-King: You still do not get it, do you?
-King: These ‘heroes’ you spend time with. They are not ‘heroes’.
-King: I wouldn’t even classify them as ‘good’.
-Lancer: What... What do you mean?
-King: They are poisoning your mind, my son.
-King: Promises of freedom and friendship just so they can use them in their own sick plans.
-King: ...
-King: I really wish you came to see me sooner.
-Lancer: I thought you were gonna be upset when I saved the Lighters.
-Lancer: And when we...
-King: And I was. But now I am not.
-King: And unlike the heroes, I HAVE changed for good.
-King: While they have been off sealing other worlds...
-King: I have been here. Self-reflecting on my actions.
-King: I have seen the error of my ways, and what my actions have inflicted upon my people.
-King: And for that, I am sorry.
-Lancer: That’s great, Dad! Let me go tell Susie
-King: I need a favor from you, Lancer.
-Lancer: ...Yeah?
-King: I need you to release me from here.
-Lancer: ...
-Lancer: I don’t know if I can do that, Dad
-King: Listen to my words.
-King: The heroes are planning something. 
-King: They keep bringing up evil parts of their plan whenever they come to taunt me in this prison.
-King: I understand you are friends with them now, so I will not force you to fight with them.
-Lancer: But won’t you
-King: I will not engage either. Do not worry.
-Lancer: ...
-Lancer: I don’t know, Dad.
-Lancer: How do I know you won’t just attack them when you get out?
-King: I give you my word, Lancer.
-Lancer: ...
-Lancer: Dad, you were gonna...
-King: As I told the heroes, it was a bluff so they would concede. I would have never harmed you.
-Lancer: You...
-King: ...
-King: If you are truly worried about what I will do,
-King: At least let me out briefly.
-King: Let me stretch my legs around here a little.
-King: Then you may return in a bit and I will go into my cell without problem.
-Lancer: I think I can do that! Let me go ask
-King: Do not ask the Lightners. They will refuse my request.
-King: I raised you well, my boy. You can make your own decision about this.
-Lancer: I...
-Lancer: Just for a few minutes?
-King: Just a few.
-Lancer: ...
-Lancer: Okay.
-(Lancer opens the cell)
+Lancer: Is that good?
+King: Perfect.
+King: If you wish to stand outside, you may do so.
+King: I do not plan on leaving.
+Lancer: Okay!
+(Lancer starts to leave)
 */
 
 		/*array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {

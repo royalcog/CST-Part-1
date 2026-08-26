@@ -491,6 +491,7 @@
     {"name":"spr_kris_up","order":3,"path":"sprites/spr_kris_up/spr_kris_up.yy",},
     {"name":"spr_lancer_dialogue","order":4,"path":"sprites/spr_lancer_dialogue/spr_lancer_dialogue.yy",},
     {"name":"spr_lancer_down","order":1,"path":"sprites/spr_lancer_down/spr_lancer_down.yy",},
+    {"name":"spr_lancer_left_sad","order":5,"path":"sprites/spr_lancer_left_sad/spr_lancer_left_sad.yy",},
     {"name":"spr_lancer_left","order":2,"path":"sprites/spr_lancer_left/spr_lancer_left.yy",},
     {"name":"spr_lancer_right_sad","order":4,"path":"sprites/spr_lancer_right_sad/spr_lancer_right_sad.yy",},
     {"name":"spr_lancer_right","order":3,"path":"sprites/spr_lancer_right/spr_lancer_right.yy",},
