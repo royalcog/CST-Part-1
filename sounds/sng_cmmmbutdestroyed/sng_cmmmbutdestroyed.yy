@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sng_cmmmbutdestroyed",
   "parent":{
-    "name":"Songs",
-    "path":"folders/Songs.yy",
+    "name":"SCP",
+    "path":"folders/Songs/SCP.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

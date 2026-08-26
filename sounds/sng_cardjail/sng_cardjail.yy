@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sng_pinkripple",
+  "%Name":"sng_cardjail",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":132.96327,
+  "duration":71.079185,
   "exportDir":"",
-  "name":"sng_pinkripple",
+  "name":"sng_cardjail",
   "parent":{
-    "name":"SCP",
-    "path":"folders/Songs/SCP.yy",
+    "name":"CST",
+    "path":"folders/Songs/CST.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sng_pinkripple.mp3",
+  "soundFile":"sng_cardjail.mp3",
   "volume":1.0,
 }

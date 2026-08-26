@@ -45,7 +45,7 @@ function scr_game_text(_text_id)
 		break;
 		
 		case "self_2":
-			scr_fade_warp_with_music(rm_one, 240, sng_empty);
+			scr_fade_warp_with_music(rm_one, 240, sng_cardjail);
 
 		break;
 		
