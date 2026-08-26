@@ -14,6 +14,7 @@ function scr_game_text(_text_id)
 	{
 		case "self_1":
 			scr_text("* Hey, Lancer!|* How's Castle Town been since we left?", "susie", 7);	
+				scr_fade_out_to_black(c_black, true, 0);
 				scr_char_move_on_page(obj_susie, spr_susie_walk_up, true, 0, -20, .2, 90);
 				scr_obj_sprite_on_page_delayed(obj_lancer, spr_lancer_down, false, 0, 45);
 				scr_obj_sprite_on_page_delayed(obj_susie, spr_susie_walk_up, false, 0, 90);
@@ -144,15 +145,59 @@ function scr_game_text(_text_id)
 		break;
 		
 		case "self_6":
-			
+			scr_text("* Is that good?", "lancer", 3);
+			scr_text("* Perfect.", "king", 0);
+				scr_obj_sprite_on_page(obj_king, spr_king_walk_left, false);
+			scr_text("* If you wish to stand outside, you may do so.", "king", 5);
+			scr_text("* I do not plan on leaving.", "king", 2);
+			scr_text("* Okay!", "lancer", 1);
+			scr_char_move_after_textbox(obj_lancer, spr_lancer_left, false, -30, 0, .2, 40);
+		break;
+		
+		case "self_7":
+			scr_text("* One more thing, Lancer.", "king", 0);
+				scr_obj_sprite_on_page(obj_lancer, spr_lancer_right, false);
+			scr_text("* Do you think you could possibly get me a phone?", "king", 5);
+			scr_text("* I wish to check up on some... friends of mine.", "king", 1);
+			scr_text("* Sure, Dad!", "lancer", 3);
+			scr_queue_movement_group_after_textbox([
+				   { obj: obj_lancer, sprite: spr_lancer_left, loop: false, dx: -30, dy: 0, speed: .2, duration: 60 },
+				   { obj: obj_king, sprite: spr_king_walk_left, loop: true, dx: -2, dy: 5, speed: .2, duration: 75 }
+			]);
+		break;
+		
+		case "self_8":
+			scr_char_move_after_textbox(obj_lancer, spr_lancer_right_phone, false, 30, 0, .2, 100);
+		break;
+		
+		case "self_9":
+			scr_text("* Here!|* I got it from Girldad!", "lancer", 0);
+				scr_obj_sprite_on_page(obj_lancer, spr_lancer_right, false);
+				scr_snd_on_page(snd_item, 1);
+			scr_text("* Thank you.", "king", 0);
+			scr_text("* I am very proud of your decision-making skills.", "king", 0);
+			scr_text("* Wow, a compliment!|* I guess you have changed!", "lancer", 0);
+			scr_text("* As I said.", "king", 0);
+			scr_text("* Okay, I'll be outside.|* Enjoy your free time!", "lancer", 0);
+			scr_text("* I will, thank you.", "king", 0);
+				scr_char_move_after_textbox(obj_lancer, spr_lancer_left, false, -30, 0, .2, 100);
+		break;
+		
+		case "self_10":
+			scr_text("* ...", "king", 5);
+			scr_text("* If only he knew.", "king", 0);
+			scr_text("* If he knew just how wrong he is.", "king", 4);
+			scr_text("* ...", "king", 5);
+			scr_text("* My son.", "king", 0);
+				scr_fade_out_to_black(c_black, true, 0);
 		break;
 /*
-Lancer: Is that good?
-King: Perfect.
-King: If you wish to stand outside, you may do so.
-King: I do not plan on leaving.
-Lancer: Okay!
-(Lancer starts to leave)
+King: ...
+King: If only he knew.
+King: If he knew just how wrong he is.
+King: ...
+King: My son.
+(King turns around and calls on the phone)
 */
 
 		/*array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {
