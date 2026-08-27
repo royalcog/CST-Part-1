@@ -29,12 +29,12 @@ if (!variable_global_exists("dbg_friend_offy"))
 // General Globals
 if (!variable_global_exists("king_moved_x"))
 {
-    global.king_moved_x = 0;
+    global.king_moved_x = noone; // noone = not set yet; rm_three keeps King's placed position
 }
 
 if (!variable_global_exists("king_moved_y"))
 {
-    global.king_moved_y = 0;
+    global.king_moved_y = noone;
 }
 
 if (!variable_global_exists("hide_face"))

@@ -270,7 +270,7 @@ function scr_game_text(_text_id)
 		break;
 		
 		case "self_16":
-			scr_fade_warp_with_music(rm_one, 240, sng_cardjail);
+			scr_fade_warp_with_music(rm_three, 240, sng_cardjail);
 		break;
 /*
 
