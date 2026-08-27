@@ -275,8 +275,38 @@ function scr_game_text(_text_id)
 		case "self_16":
 			scr_fade_warp_with_music(rm_three, 240, sng_cardjail);
 		break;
+		
+		case "self_17":
+			scr_char_move_after_textbox(obj_lancer, spr_lancer_right, false, 30, 0, .2, 100);
+			scr_obj_sprite_after_textbox_delayed(obj_king, spr_king_walk_left, false, 50);
+		break;
+		
+		case "self_18":
+			scr_text("* How are your friends, Dad?", "lancer", 1);
+			scr_text("* My...", "king", 5);
+			scr_text("* ...", "king", 5);
+			scr_text("* They are good.", "king", 2);
+			scr_text("* Nice!", "lancer", 2);
+			scr_text("* I'll... give you a few more minutes?", "lancer", 1);
+			scr_text("* I appreciate it.", "king", 7);
+			scr_text("* Okay!", "lancer", 3);
+				scr_char_move_after_textbox(obj_lancer, spr_lancer_left, false, -30, 0, .2, 100);
+		break;
+		
+		case "self_19":
+			scr_text("* ...", "king", 5);
+			scr_text("* Soon.", "king", 5);
+			scr_text("* Very, very soon.", "king", 0);
+		break;
+		
+		case "self_20":
+			scr_fade_warp_with_music(rm_four, 240, sng_cardjail);
+		break;
 /*
-
+(Queen is printing out Lancer’s face, with Tenna “helping”)
+Tenna: The kid needs his face on EVERY banner?
+Tenna: Jeez, that’s more publicity than I get!
+(Queen finishes printing)
 */
 
 		/*array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {
