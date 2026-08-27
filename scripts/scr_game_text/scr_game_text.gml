@@ -46,7 +46,6 @@ function scr_game_text(_text_id)
 		
 		case "self_2":
 			scr_fade_warp_with_music(rm_one, 240, sng_cardjail);
-
 		break;
 		
 		case "self_3":
@@ -166,7 +165,9 @@ function scr_game_text(_text_id)
 		break;
 		
 		case "self_8":
-			scr_char_move_after_textbox(obj_lancer, spr_lancer_right_phone, false, 30, 0, .2, 100);
+		    scr_char_move_after_textbox(obj_lancer, spr_lancer_right_phone, false, 30, 0, .2, 100);
+		        global.king_moved_x = obj_king.x;
+		        global.king_moved_y = obj_king.y;
 		break;
 		
 		case "self_9":
@@ -202,7 +203,7 @@ function scr_game_text(_text_id)
 			scr_text("* ...", "king");
 			scr_text("* Yes, I know you have somewhere to be, but", "king");
 				scr_text_cutoff_skip(43);
-			scr_text("*...", "king");
+			scr_text("* ...", "king");
 			scr_text("* I do not wish to impede on your time.", "king");
 			scr_text("* All I request is for you to help me with something.", "king");
 			scr_text("* As your humble servant, I believe I deserve", "king");
@@ -223,28 +224,56 @@ function scr_game_text(_text_id)
 			scr_text("* Hello?", "king");
 			scr_text("* ...", "king");
 		break;
+		
+		case "self_13":
+			scr_fade_warp_with_music(rm_two, 240, sng_empty);
+		break;
+		
+		case "self_14":
+			scr_char_move_after_textbox(obj_susie, spr_susie_walk_up, true, 0, -20, .2, 55);
+			scr_obj_sprite_after_textbox_delayed(obj_susie, spr_susie_right, false, 55);
+			scr_obj_sprite_after_textbox_delayed(obj_lancer, spr_lancer_left, false, 30);
+		break;
+		
+		case "self_15":
+			scr_text("* Hi Susie!", "lancer", 1);
+				scr_text_hide_face(false); 
+				scr_set_var_on_page(obj_textbox, "hide_box_sprite", false);
+			scr_text("* Hey dude!", "susie", 7);
+			scr_text("* How'd your talk with Toothpaste Boy go?", "lancer", 2);
+			scr_text("* We, uh...", "susie", 10);
+			scr_text("* Haven't talked yet?", "susie", 12);
+			scr_text("* He's been busy fixing up things around Castle Town since we got back, so...", "susie", 13);
+			scr_text("* Why are you out here?", "susie", 6);
+			scr_text("* ...", "lancer", 0);
+			scr_text("* Incredible!", "lancer", 8);
+				scr_text_slow(.3);
+			scr_text("* Dude, that's...", "susie", 11);
+			scr_text("* Not helpful.", "susie", 4);
+			scr_text("* I'm waiting for Girldad to finish printing something!", "lancer", 1);
+			scr_text("* Oh, sick!|* What's she printing?", "susie", 7);
+			scr_text("* My face.", "lancer", 2);
+			scr_text("* Your... face?", "susie", 6);
+			scr_text("* I'm making banners!", "lancer", 3);
+			scr_text("* ...With your face.", "susie", 3);
+			scr_text("* Yeah!", "lancer", 2);
+			scr_text("* Hey, I think we could use those for Noelle's welcome party!", "susie", 6);
+			scr_text("* Bet she'd love that.", "susie", 56);
+			scr_text("* I didn't know she was coming!", "lancer", 3);
+			scr_text("* Well, I have to talk to Ralsei about it first.", "susie", 41);
+			scr_text("* Hopefully he... gets the point easily enough.", "susie", 10);
+			scr_text("* Okay!", "lancer", 1);
+			scr_text("* ...", "susie", 20);
+			scr_text("* I'll see you around, dude.", "susie", 3);
+			scr_text("* Okay!", "lancer", 1);
+				scr_char_move_after_textbox(obj_susie, spr_susie_walk_down, true, 0, 20, .2, 55);
+		break;
+		
+		case "self_16":
+			scr_fade_warp_with_music(rm_one, 240, sng_cardjail);
+		break;
 /*
-King: Hello?
-King: ...
-King: Yes, I know you have somewhere to be, but
-King: ...
-King: I do not wish to impede on your time.
-King: All I request is for you to help me with something.
-King: As your humble servant, I believe I deserve
-King: ...
-King: I HOPE to deserve such an honor from you.
-King: ...
-King: Thank you.
-King: I will be here when you arrive. In my cell.
-King: Do you
-King: ...
-King: I see.
-King: I will make the necessary preparations.
-King: I just need to
-(Click)
-King: ...
-King: Hello?
-King: ...
+
 */
 
 		/*array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {
