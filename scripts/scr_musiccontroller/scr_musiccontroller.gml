@@ -1,6 +1,6 @@
 function start_walking_music()
 {
-    if (variable_global_exists("song") && global.song != noone && global.song != undefined)
+    if (variable_global_exists("song") && global.song != noone && global.song != undefined && is_struct(global.song))
     {
         if (global.song.sound == sng_empty) exit;
     }
@@ -24,7 +24,7 @@ function scr_song_loop_track(_sound_instance, _loop_start, _loop_end)
 
 function start_battle_music()
 {
-    if (variable_global_exists("song") && global.song != noone && global.song != undefined)
+    if (variable_global_exists("song") && global.song != noone && global.song != undefined && is_struct(global.song))
     {
         if (global.song.sound == sng_cmmm) exit;
     }

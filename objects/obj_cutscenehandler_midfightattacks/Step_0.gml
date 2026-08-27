@@ -430,13 +430,16 @@ if (processing_queue)
 		}
 		else if _entry.type == "fade_warp_music"
 		{
+		    var _carry_alpha = 0;
 		    if (instance_exists(obj_cutscenefade))
 		    {
+		        _carry_alpha = obj_cutscenefade.fade_alpha;
 		        with (obj_cutscenefade) { instance_destroy(); }
 		    }
 
 		    var _fader = instance_create_depth(0, 0, -9999, obj_cutscenefade);
 		    _fader.fade_target = 1;
+		    _fader.fade_alpha = _carry_alpha;
 		    _fader.target_room = _entry.target_room;
 		    _fader.wait_duration = _entry.wait_frames;
 		    _fader.new_music_sound = _entry.new_sound;

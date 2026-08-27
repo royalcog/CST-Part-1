@@ -166,8 +166,11 @@ function scr_game_text(_text_id)
 		
 		case "self_8":
 		    scr_char_move_after_textbox(obj_lancer, spr_lancer_right_phone, false, 30, 0, .2, 100);
-		        global.king_moved_x = obj_king.x;
-		        global.king_moved_y = obj_king.y;
+		    scr_custom_call_after_textbox_delayed(function()
+		        {
+		            global.king_moved_x = obj_king.x;
+		            global.king_moved_y = obj_king.y;
+		        }, 1);
 		break;
 		
 		case "self_9":
