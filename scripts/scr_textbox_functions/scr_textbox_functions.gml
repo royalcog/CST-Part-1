@@ -194,6 +194,26 @@ function scr_obj_spawn_on_page(_obj, _x, _y, _layer)
     array_push(obj_cutscenehandler_midfightattacks.sprite_queue, _entry);
 }
 
+function scr_obj_sprite_on_page(_obj, _sprite, _loop)
+{
+    if !instance_exists(obj_cutscenehandler_midfightattacks) exit;
+
+    var _ch = obj_cutscenehandler_midfightattacks;
+
+    var _entry = {
+	    obj: _obj,
+	    sprite: _sprite,
+	    loop: _loop,
+	    image: argument_count > 3 ? argument[3] : 0,
+	    page: global.page_number - 1,
+	    type: "sprite",
+	    snd: noone,
+	    snd_gain: 1
+	};
+
+    array_push(_ch.sprite_queue, _entry);
+}
+
 function scr_obj_sprite_on_page_delayed(_obj, _sprite, _loop, _image, _delay)
 {
     if !instance_exists(obj_cutscenehandler_midfightattacks) exit;
@@ -233,22 +253,6 @@ function scr_set_var_on_page_delayed(_obj, _var_name, _value, _delay)
         })
     });
 }
-
-function scr_obj_sprite_on_page_delayed(_obj, _sprite, _loop, _image, _delay)
-{
-    if !instance_exists(obj_cutscenehandler_midfightattacks) exit;
-    array_push(obj_cutscenehandler_midfightattacks.sprite_queue_delayed, {
-        obj: _obj,
-        sprite: _sprite,
-        loop: _loop,
-        image: _image,
-        delay: _delay,
-        page: global.page_number - 1,
-        snd: noone,
-        snd_gain: 1
-    });
-}
-
 
 function scr_obj_spawn_after_textbox(_obj, _x, _y, _layer)
 {

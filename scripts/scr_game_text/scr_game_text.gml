@@ -319,9 +319,11 @@ function scr_game_text(_text_id)
 				scr_set_var_on_page_delayed(obj_tenna, "image_speed", "0", 90);
 			scr_text("* ...", "tenna");
 			scr_text("* Doesn't the Internet have censors against this stuff???", "tenna");
+				scr_obj_sprite_on_page(obj_tenna, spr_tenna_tie1, false);
 			scr_text("* Nope", "queen", 1);
 			scr_text_secondary("I hacked them", "queen", 23);
 			scr_text("* Ah.", "tenna");
+				scr_obj_sprite_on_page(obj_tenna, spr_tenna_headup, false);
 				scr_snd_on_page(snd_tenna1, 1);
 		break;
 /*

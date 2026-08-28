@@ -663,6 +663,7 @@
     {"name":"spr_tenna_point_droop","order":9,"path":"sprites/spr_tenna_point_droop/spr_tenna_point_droop.yy",},
     {"name":"spr_tenna_point_left","order":4,"path":"sprites/spr_tenna_point_left/spr_tenna_point_left.yy",},
     {"name":"spr_tenna_snap","order":5,"path":"sprites/spr_tenna_snap/spr_tenna_snap.yy",},
+    {"name":"spr_tenna_tie1","order":13,"path":"sprites/spr_tenna_tie1/spr_tenna_tie1.yy",},
     {"name":"spr_tenna_up_point_b","order":2,"path":"sprites/spr_tenna_up_point_b/spr_tenna_up_point_b.yy",},
     {"name":"spr_tenna_whisper","order":12,"path":"sprites/spr_tenna_whisper/spr_tenna_whisper.yy",},
     {"name":"spr_textbox_arrow","order":3,"path":"sprites/spr_textbox_arrow/spr_textbox_arrow.yy",},

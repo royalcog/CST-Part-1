@@ -790,6 +790,7 @@
     {"id":{"name":"spr_tenna_point_droop","path":"sprites/spr_tenna_point_droop/spr_tenna_point_droop.yy",},},
     {"id":{"name":"spr_tenna_point_left","path":"sprites/spr_tenna_point_left/spr_tenna_point_left.yy",},},
     {"id":{"name":"spr_tenna_snap","path":"sprites/spr_tenna_snap/spr_tenna_snap.yy",},},
+    {"id":{"name":"spr_tenna_tie1","path":"sprites/spr_tenna_tie1/spr_tenna_tie1.yy",},},
     {"id":{"name":"spr_tenna_up_point_b","path":"sprites/spr_tenna_up_point_b/spr_tenna_up_point_b.yy",},},
     {"id":{"name":"spr_tenna_whisper","path":"sprites/spr_tenna_whisper/spr_tenna_whisper.yy",},},
     {"id":{"name":"spr_textbox_arrow","path":"sprites/spr_textbox_arrow/spr_textbox_arrow.yy",},},
