@@ -377,9 +377,19 @@ if secondary_text[page] != ""
         var _sec_margin_y = 10;             // inset from the main box's bottom edge
         var _sec_base_portrait_scale = 0.7;
 		var _sec_draw_portrait_scale = _sec_base_portrait_scale;
+		var _sec_portrait_y_adjust = -60; // default nudge up to visually match the text line (tune to taste)
+		var _sec_portrait_x_adjust = 0;   // default extra left/right shift for the portrait
+		var _sec_text_x_adjust = 0;       // default extra left/right shift for the text line
+		var _sec_text_y_adjust = 0;       // default extra up/down shift for the text line
+
 		if (secondary_portrait_spr[page] == spr_lancer_dialogue)
 		{
 		    _sec_draw_portrait_scale *= 1.15;
+		}
+		else if (secondary_portrait_spr[page] == spr_queen_dialogue)
+		{
+			_sec_draw_portrait_scale *= 1.4;
+		    _sec_portrait_y_adjust = -10; // queen's face sits lower on her sheet, so needs less upward nudge than lancer
 		}
         var _sec_h = string_height("Ay") * _sec_scale; // shared line height for portrait + text
         var _sec_anchor_x = textbox_x + textbox_width - 220; // start point, inset from the box's right edge — tune to taste
@@ -391,17 +401,16 @@ if secondary_text[page] != ""
         if secondary_portrait_spr[page] != noone
 		{
 		    var _sec_portrait_w = sprite_get_width(secondary_portrait_spr[page]) * _sec_base_portrait_scale;
-		    var _sec_portrait_y_adjust = -60; // nudge up to visually match the text line (tune to taste)
-		    draw_sprite_ext(secondary_portrait_spr[page], secondary_image[page], _sec_x + _sec_portrait_w / 2,
+		    draw_sprite_ext(secondary_portrait_spr[page], secondary_image[page], _sec_x + _sec_portrait_w / 2 + _sec_portrait_x_adjust,
 		        _sec_y + _sec_portrait_y_adjust, secondary_side[page] * _sec_draw_portrait_scale,
 		        _sec_draw_portrait_scale, 0, c_white, 1);
 		    _sec_x += _sec_portrait_w + _sec_margin_x;
 		}
 
-        draw_set_font(fnt_determination);
-        draw_set_halign(fa_left);
-        draw_set_valign(fa_top);
-        draw_text_transformed_color(_sec_x, _sec_y, _sec_str, _sec_scale, _sec_scale, 0,
-            _sec_col, _sec_col, _sec_col, _sec_col, 1);
+		draw_set_font(fnt_determination);
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_top);
+		draw_text_transformed_color(_sec_x + _sec_text_x_adjust, _sec_y + _sec_text_y_adjust, _sec_str, _sec_scale, _sec_scale, 0,
+		    _sec_col, _sec_col, _sec_col, _sec_col, 1);
     }
 }

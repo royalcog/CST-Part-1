@@ -194,24 +194,44 @@ function scr_obj_spawn_on_page(_obj, _x, _y, _layer)
     array_push(obj_cutscenehandler_midfightattacks.sprite_queue, _entry);
 }
 
-function scr_obj_sprite_on_page(_obj, _sprite, _loop)
+function scr_obj_sprite_on_page_delayed(_obj, _sprite, _loop, _image, _delay)
 {
     if !instance_exists(obj_cutscenehandler_midfightattacks) exit;
-    
-    var _ch = obj_cutscenehandler_midfightattacks;
-    
-    var _entry = {
-	    obj: _obj,
-	    sprite: _sprite,
-	    loop: _loop,
-	    image: argument_count > 3 ? argument[3] : 0,
-	    page: global.page_number - 1,
-	    type: "sprite",
-	    snd: noone,
-	    snd_gain: 1
-	};
-    
-    array_push(_ch.sprite_queue, _entry);
+    array_push(obj_cutscenehandler_midfightattacks.sprite_queue_delayed, {
+        obj: _obj,
+        sprite: _sprite,
+        loop: _loop,
+        image: _image,
+        delay: _delay,
+        page: global.page_number - 1,
+        snd: noone,
+        snd_gain: 1
+    });
+}
+
+/// @param _obj - instance to set the variable on, or noone to set a global variable instead
+/// @param _var_name - variable name as a string (e.g. "sprite_index", "my_flag")
+/// @param _value - value to set it to
+/// @param _delay - frames to wait; only counts down while the page it was called on is still showing
+function scr_set_var_on_page_delayed(_obj, _var_name, _value, _delay)
+{
+    if !instance_exists(obj_cutscenehandler_midfightattacks) exit;
+    array_push(obj_cutscenehandler_midfightattacks.sprite_queue_delayed, {
+        page: global.page_number - 1,
+        delay: _delay,
+        is_custom_call: true,
+        call_func: method({ obj: _obj, var_name: _var_name, value: _value }, function()
+        {
+            if (obj == noone)
+            {
+                variable_global_set(var_name, value);
+            }
+            else if (instance_exists(obj))
+            {
+                variable_instance_set(obj, var_name, value);
+            }
+        })
+    });
 }
 
 function scr_obj_sprite_on_page_delayed(_obj, _sprite, _loop, _image, _delay)
@@ -919,6 +939,26 @@ function scr_custom_call_after_textbox_delayed(_func, _delay)
         call_func: _func,
         delay: _delay
     });
+}
+
+/// @param _obj - instance to set the variable on, or noone to set a global variable instead
+/// @param _var_name - variable name as a string (e.g. "sprite_index", "my_flag")
+/// @param _value - value to set it to
+/// @param _delay - frames to wait after the textbox closes
+function scr_set_var_after_textbox_delayed(_obj, _var_name, _value, _delay)
+{
+    if (!instance_exists(obj_cutscenehandler_midfightattacks)) exit;
+    scr_custom_call_after_textbox_delayed(method({ obj: _obj, var_name: _var_name, value: _value }, function()
+    {
+        if (obj == noone)
+        {
+            variable_global_set(var_name, value);
+        }
+        else if (instance_exists(obj))
+        {
+            variable_instance_set(obj, var_name, value);
+        }
+    }), _delay);
 }
 
 function scr_queue_movement_group_after_textbox(_moves)

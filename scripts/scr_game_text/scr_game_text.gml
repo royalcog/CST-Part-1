@@ -307,18 +307,22 @@ function scr_game_text(_text_id)
 			scr_text("* The kid needs his face on EVERY banner?", "tenna");
 			scr_text("* Jeez, that's more publicity than I get!", "tenna");
 				scr_obj_sprite_on_page(obj_tenna, spr_tenna_whisper, false);
+				scr_obj_sprite_after_textbox(obj_tenna, spr_tenna_headup, false);
 		break;
 		
 		case "self_22":
 			scr_text("* I Think He Has A Cool Face", "queen", 1);
 			scr_text("* It Would Be Cooler If It Were A Robot One Though", "queen", 15);
 			scr_text("* What is with you and robot faces?", "tenna");
-			scr_text("* I Can Attach Them Easier To My Bosom", "queen", 7);
+				scr_obj_sprite_on_page(obj_tenna, spr_tenna_laugh, true);
+			scr_text("* I Can Attach Them Easily To My Bosom", "queen", 7);
+				scr_set_var_on_page_delayed(obj_tenna, "image_speed", "0", 90);
 			scr_text("* ...", "tenna");
 			scr_text("* Doesn't the Internet have censors against this stuff???", "tenna");
 			scr_text("* Nope", "queen", 1);
-			scr_text_secondary("* I hacked them", "queen", 23);
+			scr_text_secondary("I hacked them", "queen", 23);
 			scr_text("* Ah.", "tenna");
+				scr_snd_on_page(snd_tenna1, 1);
 		break;
 /*
 Queen: I Think He Has A Cool Face

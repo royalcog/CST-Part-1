@@ -128,9 +128,13 @@ if instance_exists(obj_textbox)
         if (obj_textbox.page == _entry.page)
         {
             _entry.delay -= 1;
-            if (_entry.delay <= 0)
+                        if (_entry.delay <= 0)
             {
-                if (variable_struct_exists(_entry, "type") && _entry.type == "layer_visible")
+                if (variable_struct_exists(_entry, "is_custom_call") && _entry.is_custom_call)
+                {
+                    _entry.call_func();
+                }
+                else if (variable_struct_exists(_entry, "type") && _entry.type == "layer_visible")
 				{
 				    var _lyr = layer_get_id(_entry.layer_name);
 				    if (_lyr != -1)
