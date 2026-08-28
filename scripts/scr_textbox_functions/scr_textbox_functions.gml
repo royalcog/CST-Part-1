@@ -97,6 +97,12 @@ function scr_text_secondary(_text, _character = noone, _image = 0, _side = 1)
 				secondary_col[_page] = make_colour_rgb(101, 170, 38);
 				secondary_snd[_page] = snd_gerson;
 			break;
+			
+			case "queen":
+				secondary_col[_page] = make_colour_rgb(111, 209, 255);
+				secondary_portrait_spr[_page] = spr_queen_dialogue;
+				secondary_snd[_page] = snd_queen;
+			break;
 		}
 	}
 }
@@ -1197,6 +1203,12 @@ function scr_text(_text, _character = noone, _index = noone, _mode = noone, _fre
 				snd[global.page_number] = snd_king;
 				global.speaker_sprite[global.page_number] = spr_king_dialogue;
 				scr_text_color_default(make_colour_rgb(96, 128, 192));
+			break;
+			
+			case "queen":
+				snd[global.page_number] = snd_queen;
+				global.speaker_sprite[global.page_number] = spr_queen_dialogue;
+				scr_text_color_default(make_colour_rgb(111, 209, 255));
 			break;
 			
 			case "empty":

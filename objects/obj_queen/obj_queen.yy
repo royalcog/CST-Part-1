@@ -1,13 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_tenna",
+  "%Name":"obj_queen",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_tenna",
+  "name":"obj_queen",
   "overriddenProperties":[],
   "parent":{
     "name":"Enemies",
@@ -32,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_tenna_headup",
-    "path":"sprites/spr_tenna_headup/spr_tenna_headup.yy",
+    "name":"spr_queen_printing",
+    "path":"sprites/spr_queen_printing/spr_queen_printing.yy",
   },
   "spriteMaskId":null,
   "visible":true,

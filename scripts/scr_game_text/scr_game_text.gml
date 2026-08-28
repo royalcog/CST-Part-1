@@ -302,11 +302,35 @@ function scr_game_text(_text_id)
 		case "self_20":
 			scr_fade_warp_with_music(rm_four, 240, sng_cardjail);
 		break;
+		
+		case "self_21":
+			scr_text("* The kid needs his face on EVERY banner?", "tenna");
+			scr_text("* Jeez, that's more publicity than I get!", "tenna");
+				scr_obj_sprite_on_page(obj_tenna, spr_tenna_whisper, false);
+		break;
+		
+		case "self_22":
+			scr_text("* I Think He Has A Cool Face", "queen", 1);
+			scr_text("* It Would Be Cooler If It Were A Robot One Though", "queen", 15);
+			scr_text("* What is with you and robot faces?", "tenna");
+			scr_text("* I Can Attach Them Easier To My Bosom", "queen", 7);
+			scr_text("* ...", "tenna");
+			scr_text("* Doesn't the Internet have censors against this stuff???", "tenna");
+			scr_text("* Nope", "queen", 1);
+			scr_text_secondary("* I hacked them", "queen", 23);
+			scr_text("* Ah.", "tenna");
+		break;
 /*
-(Queen is printing out Lancer’s face, with Tenna “helping”)
-Tenna: The kid needs his face on EVERY banner?
-Tenna: Jeez, that’s more publicity than I get!
-(Queen finishes printing)
+Queen: I Think He Has A Cool Face
+Queen: It Would Be Cooler If It Were A Robot One Though
+Tenna: What is with you and robot faces?
+Queen: I Can Attach Them Easier To My Bosom
+Tenna: ...
+Tenna: Doesn’t the Internet have censors against this stuff???
+Queen: Nope
+Queen: I hacked them
+Tenna: Ah.
+(Ralsei comes in)
 */
 
 		/*array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {
