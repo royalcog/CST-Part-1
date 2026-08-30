@@ -14,8 +14,7 @@ switch (phase)
     case "popping":
         pop_timer++;
         var _t = clamp(pop_timer / pop_length, 0, 1);
-        x_scale = lerp(1.8, 2, _t);
-        y_scale = lerp(1.8, 2, _t);
+        x_scale = lerp(squish_x_scale, full_x_scale, _t);
 
         if (pop_timer >= pop_length)
         {
