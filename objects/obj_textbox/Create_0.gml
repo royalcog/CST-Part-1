@@ -39,6 +39,8 @@ secondary_snd[0] = noone;
 secondary_draw_char = 0;
 secondary_snd_count = 0;
 secondary_snd_delay = 2;
+secondary_wait_timer = 0;
+secondary_wait_time = 10; // frames to wait before secondary text starts (30 = ~1 sec)
 //options
 option[0] = "";
 option_link_id[0] = -1;

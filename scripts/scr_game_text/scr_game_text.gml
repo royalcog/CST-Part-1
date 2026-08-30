@@ -300,10 +300,11 @@ function scr_game_text(_text_id)
 		break;
 		
 		case "self_20":
-			scr_fade_warp_with_music(rm_four, 240, sng_cardjail);
+			scr_fade_warp_with_music(rm_four, 240, sng_queensboard);
 		break;
 		
 		case "self_21":
+			if (!audio_is_playing(sng_queensboard)){audio_play_sound(sng_queensboard, 1, true)}
 			scr_text("* The kid needs his face on EVERY banner?", "tenna");
 			scr_text("* Jeez, that's more publicity than I get!", "tenna");
 				scr_obj_sprite_on_page(obj_tenna, spr_tenna_whisper, false);

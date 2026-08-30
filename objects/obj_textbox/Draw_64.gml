@@ -111,6 +111,7 @@ if text_pause_timer <= 0
                     tail_anim_done = false;
                     draw_char = 0;
                     secondary_draw_char = 0;
+					secondary_wait_timer = 0;
                     secondary_snd_count = 0;
                     if facing_change[page] != noone
                     {
@@ -159,6 +160,7 @@ if accept_key
             tail_anim_done = false;
             draw_char = 0;
             secondary_draw_char = 0;
+			secondary_wait_timer = 0;
             secondary_snd_count = 0;
             if facing_change[page] != noone
             {
@@ -354,29 +356,36 @@ if secondary_text[page] != ""
     var _sec_prev_chars = floor(secondary_draw_char);
 
     if (draw_char >= text_length[page]) && (secondary_draw_char < _sec_length)
-    {
-        secondary_draw_char += text_speed;
-        secondary_draw_char = clamp(secondary_draw_char, 0, _sec_length);
+	{
+	    if secondary_wait_timer < secondary_wait_time
+	    {
+	        secondary_wait_timer++;
+	    }
+	    else
+	    {
+	        secondary_draw_char += text_speed;
+	        secondary_draw_char = clamp(secondary_draw_char, 0, _sec_length);
 
-        // play the speaker's tick sound as new characters get revealed
-        var _sec_new_chars = floor(secondary_draw_char);
-        if _sec_new_chars > _sec_prev_chars && secondary_snd[page] != noone
-        {
-            var _sec_check_char = string_char_at(secondary_text[page], _sec_new_chars);
-            if _sec_check_char != "*" && _sec_check_char != " "
-            {
-                if secondary_snd_count < secondary_snd_delay
-                {
-                    secondary_snd_count++;
-                }
-                else
-                {
-                    secondary_snd_count = 0;
-                    audio_play_sound(secondary_snd[page], 8, false);
-                }
-            }
-        }
-    }
+	        // play the speaker's tick sound as new characters get revealed
+	        var _sec_new_chars = floor(secondary_draw_char);
+	        if _sec_new_chars > _sec_prev_chars && secondary_snd[page] != noone
+	        {
+	            var _sec_check_char = string_char_at(secondary_text[page], _sec_new_chars);
+	            if _sec_check_char != "*" && _sec_check_char != " "
+	            {
+	                if secondary_snd_count < secondary_snd_delay
+	                {
+	                    secondary_snd_count++;
+	                }
+	                else
+	                {
+	                    secondary_snd_count = 0;
+	                    audio_play_sound(secondary_snd[page], 8, false);
+	                }
+	            }
+	        }
+	    }
+	}
 
     var _sec_str = string_copy(secondary_text[page], 1, floor(secondary_draw_char));
 
