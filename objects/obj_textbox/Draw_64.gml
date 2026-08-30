@@ -62,16 +62,26 @@ if text_pause_timer <= 0
             {
                 snd_count = 0;
                 if snd[page] != noone
-                {
-                    var _play_snd = snd[page];
-                    if _play_snd == snd_tenna1
-                    {
-                        var _tenna_snds = [snd_tenna1, snd_tenna2, snd_tenna3, snd_tenna4, snd_tenna5,
-                                           snd_tenna6, snd_tenna7, snd_tenna8, snd_tenna9, snd_tenna10];
-                        _play_snd = _tenna_snds[irandom(9)];
-                    }
-                    audio_play_sound(_play_snd, 8, false);
-                }
+				{
+				    var _play_snd = snd[page];
+				    if _play_snd == snd_queen
+				    {
+				        audio_stop_sound(snd_queen);
+				        var _q_inst = audio_play_sound(snd_queen, 8, false);
+				        audio_sound_pitch(_q_inst, 0.9 + random(0.15));
+				    }
+				    else if _play_snd == snd_tenna1
+				    {
+				        var _tenna_snds = [snd_tenna1, snd_tenna2, snd_tenna3, snd_tenna4, snd_tenna5,
+				                           snd_tenna6, snd_tenna7, snd_tenna8, snd_tenna9, snd_tenna10];
+				        _play_snd = _tenna_snds[irandom(9)];
+				        audio_play_sound(_play_snd, 8, false);
+				    }
+				    else
+				    {
+				        audio_play_sound(_play_snd, 8, false);
+				    }
+				}
             }
         }
 		
