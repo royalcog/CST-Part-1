@@ -318,27 +318,62 @@ function scr_game_text(_text_id)
 			scr_text("* What is with you and robot faces?", "tenna");
 				scr_obj_sprite_on_page(obj_tenna, spr_tenna_laugh, true);
 			scr_text("* I Can Attach Them Easily To My Bosom", "queen", 7);
+				scr_obj_sprite_on_page(obj_queen, spr_queen_laughing, true);
 				scr_set_var_on_page_delayed(obj_tenna, "image_speed", "0", 90);
 			scr_text("* ...", "tenna");
 			scr_text("* Doesn't the Internet have censors against this stuff???", "tenna");
 				scr_obj_sprite_on_page(obj_tenna, spr_tenna_tie1, false);
 			scr_text("* Nope", "queen", 1);
+				scr_obj_sprite_on_page(obj_queen, spr_queen_walk_right, false);
 			scr_text_secondary("I hacked them", "queen", 23);
 			scr_text("* Ah.", "tenna");
 				scr_obj_sprite_on_page(obj_tenna, spr_tenna_headup, false);
 				scr_snd_on_page(snd_tenna1, 1);
+				scr_char_move_after_textbox(obj_ralsei, spr_ralsei_walk_up, true, 0, -15, .2, 75);
+				scr_obj_sprite_after_textbox_delayed(obj_queen, spr_queen_walk_down, false, 60);
+				scr_obj_sprite_after_textbox_delayed(obj_ralsei, spr_ralsei_walk_up, false, 75);
+		break;
+		
+		case "self_23":
+			scr_text("* Am I interrupting something?", "ralsei", 33);
+			scr_text("* Just A Lancer Publicity Act (Patent Pending)", "queen", 1);
+				scr_obj_sprite_on_page(obj_queen, spr_queen_laughing, true);
+			scr_text("* ...", "ralsei", 22);
+			scr_text("* Anyways, I wanted to get both of your opinions on something.", "ralsei", 20);
+			scr_text("* Lay it on us, plushie!", "tenna");
+				scr_obj_sprite_on_page(obj_tenna, spr_tenna_point_at_screen, false);
+			scr_text("* ...What?", "ralsei", 21);
+			scr_text("* Lay it on us, Ralsei!", "tenna");
 		break;
 /*
-Queen: I Think He Has A Cool Face
-Queen: It Would Be Cooler If It Were A Robot One Though
-Tenna: What is with you and robot faces?
-Queen: I Can Attach Them Easier To My Bosom
-Tenna: ...
-Tenna: Doesn’t the Internet have censors against this stuff???
-Queen: Nope
-Queen: I hacked them
-Tenna: Ah.
-(Ralsei comes in)
+Ralsei: Anyways, I wanted to get both of your opinions on something.
+Tenna: Lay it on us, plushie!
+Ralsei: ...What?
+Tenna: Lay it on us, Ralsei!
+Ralsei: What do you guys think of Noelle’s return to the Dark World?
+Ralsei: I know Susie really wants it, and I don’t blame her, but...
+Ralsei: Something about this doesn’t feel like... the right thing to want.
+Ralsei: It’s not even a matter of the Prophecy, it’s just...
+Queen: I Think Noelle Would Be A Great Addition To My Town
+Ralsei: Your... town?
+Queen: Did I Stutter
+Tenna: I can’t really fit a 4th podium for the gameshow, so...
+Tenna: If she wants to join, you gotta kick Susie out. 
+	(Ralsei: We’re not doing your show again???)
+Ralsei: It just feels weird, you know?
+Ralsei: It’s been the three of us for the whole time, and now...
+Queen: She Was With You Guys Like 3 Days Ago
+Queen: As Was Burghley
+Queen: L Memory Loss
+	(Ralsei: Okay...)
+Ralsei: I guess the real point is that I’m worried she’ll disrupt plans that are already in motion.
+Ralsei: The Prophecy says what it says, and there isn’t much I can do to change it, but...
+Queen: Didn’t That Flower Man Tell You To Stop Doing That
+Ralsei: How... How did you know about Flowery???
+Queen: Orb
+	(Ralsei: ...)
+Ralsei: Well, thanks, you guys!
+(Ralsei leaves)
 */
 
 		/*array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {

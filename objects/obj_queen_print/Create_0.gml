@@ -3,8 +3,8 @@ print_index = 1;
 print_width = sprite_get_width(print_spr);
 print_height = sprite_get_height(print_spr);
 
-mouth_offset_x = -5;
-mouth_offset_y = -33;
+mouth_offset_x = -4;
+mouth_offset_y = -94;
 
 x = obj_queen.x + mouth_offset_x;
 y = obj_queen.y + mouth_offset_y;
