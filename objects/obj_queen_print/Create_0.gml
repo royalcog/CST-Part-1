@@ -36,3 +36,5 @@ fly_speed = 0.08; // lerp rate — lower is slower/floatier
 
 var _cam = scr_get_gui_scale();
 fly_target_x = _cam.vx - 100; // just past the camera's left edge
+
+print_snd_played = false;
