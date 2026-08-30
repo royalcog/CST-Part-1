@@ -359,11 +359,15 @@ function scr_game_text(_text_id)
 			scr_text("* If she wants to join, you gotta kick Susie out. ", "tenna");
 				scr_obj_sprite_on_page(obj_tenna, spr_tenna_laugh_up, false);
 				scr_text_secondary("We're not doing your show again???", "ralsei", 30);
+			scr_text("* It just feels weird, you know?", "ralsei", 6);
+			scr_text("* It's been the three of us for the whole time, and now...", "ralsei", 7);
+			scr_text("* She Was With You Guys Like 3 Days Ago", "queen", 13);
+			scr_text("* As Was Burghley", "queen", 9);
+			scr_text("* L Memory Loss", "queen", 1);
+				scr_obj_sprite_on_page(obj_queen, spr_queen_laughing, true);
+				scr_text_secondary("Okay...", "ralsei", 22);
 		break;
 /*
-Tenna: I can't really fit a 4th podium for the gameshow, so...
-Tenna: If she wants to join, you gotta kick Susie out. 
-	(Ralsei: We're not doing your show again???)
 Ralsei: It just feels weird, you know?
 Ralsei: It's been the three of us for the whole time, and now...
 Queen: She Was With You Guys Like 3 Days Ago
