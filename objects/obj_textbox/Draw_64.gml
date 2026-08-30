@@ -396,91 +396,117 @@ if secondary_text[page] != ""
     var _sec_str = string_copy(secondary_text[page], 1, floor(secondary_draw_char));
 
     if (string_length(_sec_str) > 0)
-    {
-        var _sec_scale = 1;              // smaller than the main text_scale (2)
-        var _sec_margin_x = 14;             // left/right padding around the aside
-        var _sec_margin_y = 10;             // inset from the main box's bottom edge
-        var _sec_base_portrait_scale = 0.7;
-		var _sec_draw_portrait_scale = _sec_base_portrait_scale;
-		var _sec_portrait_y_adjust = -60; // default nudge up to visually match the text line (tune to taste)
-		var _sec_portrait_x_adjust = 0;   // default extra left/right shift for the portrait
-		var _sec_text_x_adjust = 0;       // default extra left/right shift for the text line
-		var _sec_text_y_adjust = 0;       // default extra up/down shift for the text line
+	{
+	    var _sec_scale = 1;
+	    var _sec_margin_x = 14;
+	    var _sec_margin_y = 10;
+	    var _sec_base_portrait_scale = 0.7;
+	    var _sec_draw_portrait_scale = _sec_base_portrait_scale;
+	    var _sec_portrait_y_adjust = -60;
+	    var _sec_portrait_x_adjust = 0;
+	    var _sec_text_x_adjust = 0;
+	    var _sec_text_y_adjust = 0;
 
-		if (secondary_portrait_spr[page] == spr_lancer_dialogue)
-		{
-		    _sec_draw_portrait_scale *= 1.15;
-		}
-		else if (secondary_portrait_spr[page] == spr_ralsei_dialogue)
-		{
-		    _sec_draw_portrait_scale *= 1.15;
-			_sec_portrait_y_adjust = -3;
-			_sec_text_y_adjust = -10;
-		}
-		else if (secondary_portrait_spr[page] == spr_queen_dialogue)
-		{
-			_sec_draw_portrait_scale *= 1.4;
-		    _sec_portrait_y_adjust = -10; // queen's face sits lower on her sheet, so needs less upward nudge than lancer
-		}
-        var _sec_h = string_height("Ay") * _sec_scale; // shared line height for portrait + text
-        var _sec_anchor_x = textbox_x + textbox_width - 220; // start point, inset from the box's right edge — tune to taste
-        var _sec_y_adjust = -20; // move the whole mini-box (portrait + text) up — tune to taste
-        var _sec_y = textbox_y + textbox_height - _sec_h - _sec_margin_y + _sec_y_adjust; // bottom-right corner of the main box
-        var _sec_x = _sec_anchor_x;
-        var _sec_col = secondary_col[page];
+	    if (secondary_portrait_spr[page] == spr_lancer_dialogue)
+	    {
+	        _sec_draw_portrait_scale *= 1.15;
+	    }
+	    else if (secondary_portrait_spr[page] == spr_ralsei_dialogue)
+	    {
+	        _sec_draw_portrait_scale *= 1.15;
+	        _sec_portrait_y_adjust = 2;
+	        _sec_text_y_adjust = 4;
+	    }
+	    else if (secondary_portrait_spr[page] == spr_queen_dialogue)
+	    {
+	        _sec_draw_portrait_scale *= 1.4;
+	        _sec_portrait_y_adjust = -24;
+	        _sec_text_y_adjust = -18;
+	    }
 
-        if secondary_portrait_spr[page] != noone
-		{
-		    var _sec_portrait_w = sprite_get_width(secondary_portrait_spr[page]) * _sec_base_portrait_scale;
-		    draw_sprite_ext(secondary_portrait_spr[page], secondary_image[page], _sec_x + _sec_portrait_w / 2 + _sec_portrait_x_adjust,
-		        _sec_y + _sec_portrait_y_adjust, secondary_side[page] * _sec_draw_portrait_scale,
-		        _sec_draw_portrait_scale, 0, c_white, 1);
-		    _sec_x += _sec_portrait_w + _sec_margin_x;
-		}
+	    var _sec_h = string_height("Ay") * _sec_scale;
+	    var _sec_anchor_x = textbox_x + textbox_width - 220;
+	    var _sec_y_adjust = -20;
+	    var _sec_col = secondary_col[page];
 
-		draw_set_font(fnt_determination);
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_top);
+	    var _sec_has_portrait = (secondary_portrait_spr[page] != noone);
+	    var _sec_portrait_w = _sec_has_portrait ? sprite_get_width(secondary_portrait_spr[page]) * _sec_base_portrait_scale : 0;
+	    var _sec_x_text = _sec_anchor_x + (_sec_has_portrait ? _sec_portrait_w + _sec_margin_x : 0);
+	    var _sec_max_w = (textbox_x + textbox_width - border) - (_sec_x_text + _sec_text_x_adjust);
 
-		// wrap within the same right-hand border the main textbox respects
-		var _sec_max_w = (textbox_x + textbox_width - border) - (_sec_x + _sec_text_x_adjust);
-		var _sec_line_str = "";
-		var _sec_line_num = 0;
-		var _sec_char_count = string_length(_sec_str);
+	    // pre-count total lines the FULL text will need, so the block grows upward
+	    // from a fixed bottom anchor instead of overflowing past the box
+	    var _sec_total_lines = 0;
+	    var _sec_count_str = "";
+	    var _sec_full_len = string_length(secondary_text[page]);
+	    for (var i = 1; i <= _sec_full_len; i++)
+	    {
+	        var _ch2 = string_char_at(secondary_text[page], i);
+	        var _test2 = _sec_count_str + _ch2;
+	        if (string_width(_test2) * _sec_scale > _sec_max_w && _sec_count_str != "")
+	        {
+	            var _break2 = string_last_pos(" ", _sec_count_str);
+	            _sec_count_str = (_break2 > 0)
+	                ? string_copy(_sec_count_str, _break2 + 1, string_length(_sec_count_str) - _break2) + _ch2
+	                : _ch2;
+	            _sec_total_lines++;
+	        }
+	        else
+	        {
+	            _sec_count_str = _test2;
+	        }
+	    }
 
-		for (var i = 1; i <= _sec_char_count; i++)
-		{
-		    var _ch = string_char_at(_sec_str, i);
-		    var _test_line = _sec_line_str + _ch;
+	    var _sec_y = textbox_y + textbox_height - _sec_h - _sec_margin_y + _sec_y_adjust - (_sec_total_lines * _sec_h);
 
-		    if (string_width(_test_line) * _sec_scale > _sec_max_w && _sec_line_str != "")
-		    {
-		        var _break_at = string_last_pos(" ", _sec_line_str);
+	    if (_sec_has_portrait)
+	    {
+	        draw_sprite_ext(secondary_portrait_spr[page], secondary_image[page], _sec_anchor_x + _sec_portrait_w / 2 + _sec_portrait_x_adjust,
+	            _sec_y + _sec_portrait_y_adjust, secondary_side[page] * _sec_draw_portrait_scale,
+	            _sec_draw_portrait_scale, 0, c_white, 1);
+	    }
 
-		        if (_break_at > 0)
-		        {
-		            draw_text_transformed_color(_sec_x + _sec_text_x_adjust, _sec_y + _sec_text_y_adjust + _sec_line_num * _sec_h,
-		                string_copy(_sec_line_str, 1, _break_at - 1), _sec_scale, _sec_scale, 0,
-		                _sec_col, _sec_col, _sec_col, _sec_col, 1);
-		            _sec_line_str = string_copy(_sec_line_str, _break_at + 1, string_length(_sec_line_str) - _break_at) + _ch;
-		        }
-		        else
-		        {
-		            draw_text_transformed_color(_sec_x + _sec_text_x_adjust, _sec_y + _sec_text_y_adjust + _sec_line_num * _sec_h,
-		                _sec_line_str, _sec_scale, _sec_scale, 0,
-		                _sec_col, _sec_col, _sec_col, _sec_col, 1);
-		            _sec_line_str = _ch;
-		        }
-		        _sec_line_num++;
-		    }
-		    else
-		    {
-		        _sec_line_str = _test_line;
-		    }
-		}
+	    draw_set_font(fnt_determination);
+	    draw_set_halign(fa_left);
+	    draw_set_valign(fa_top);
 
-		draw_text_transformed_color(_sec_x + _sec_text_x_adjust, _sec_y + _sec_text_y_adjust + _sec_line_num * _sec_h,
-		    _sec_line_str, _sec_scale, _sec_scale, 0,
-		    _sec_col, _sec_col, _sec_col, _sec_col, 1);
-    }
+	    var _sec_line_str = "";
+	    var _sec_line_num = 0;
+	    var _sec_char_count = string_length(_sec_str);
+
+	    for (var i = 1; i <= _sec_char_count; i++)
+	    {
+	        var _ch = string_char_at(_sec_str, i);
+	        var _test_line = _sec_line_str + _ch;
+
+	        if (string_width(_test_line) * _sec_scale > _sec_max_w && _sec_line_str != "")
+	        {
+	            var _break_at = string_last_pos(" ", _sec_line_str);
+
+	            if (_break_at > 0)
+	            {
+	                draw_text_transformed_color(_sec_x_text + _sec_text_x_adjust, _sec_y + _sec_text_y_adjust + _sec_line_num * _sec_h,
+	                    string_copy(_sec_line_str, 1, _break_at - 1), _sec_scale, _sec_scale, 0,
+	                    _sec_col, _sec_col, _sec_col, _sec_col, 1);
+	                _sec_line_str = string_copy(_sec_line_str, _break_at + 1, string_length(_sec_line_str) - _break_at) + _ch;
+	            }
+	            else
+	            {
+	                draw_text_transformed_color(_sec_x_text + _sec_text_x_adjust, _sec_y + _sec_text_y_adjust + _sec_line_num * _sec_h,
+	                    _sec_line_str, _sec_scale, _sec_scale, 0,
+	                    _sec_col, _sec_col, _sec_col, _sec_col, 1);
+	                _sec_line_str = _ch;
+	            }
+	            _sec_line_num++;
+	        }
+	        else
+	        {
+	            _sec_line_str = _test_line;
+	        }
+	    }
+
+	    draw_text_transformed_color(_sec_x_text + _sec_text_x_adjust, _sec_y + _sec_text_y_adjust + _sec_line_num * _sec_h,
+	        _sec_line_str, _sec_scale, _sec_scale, 0,
+	        _sec_col, _sec_col, _sec_col, _sec_col, 1);
+	}
 }
