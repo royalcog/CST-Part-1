@@ -206,12 +206,17 @@ if global.speaker_sprite[page] != noone && !global.hide_face
     var _portrait_x = textbox_x + global.portrait_x_offset[page] + 10;
     var _base_scale = ((textbox_height - border * 2) / sprite_get_height(_portrait_spr)) * 0.9;
     var _draw_scale = _base_scale;
-    var _portrait_y_adjust = 0; // tune this to nudge the main portrait up(-)/down(+)
+    var _portrait_y_adjust = 0;
 
     if (_portrait_spr == spr_lancer_dialogue)
     {
-        _draw_scale *= 1.15; // bump only the visual size — position math below still uses _base_scale
-		_portrait_y_adjust = -8;
+        _draw_scale *= 1.15;
+        _portrait_y_adjust = -8;
+    }
+    else if (_portrait_spr == spr_ralsei_dialogue)
+    {
+        _draw_scale *= 1.2;
+        _portrait_y_adjust = -6;
     }
 
     var _portrait_w = sprite_get_width(_portrait_spr);
