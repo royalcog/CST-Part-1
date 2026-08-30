@@ -18,6 +18,7 @@ switch (phase)
         x_scale = lerp(squish_x_scale, full_x_scale, _t);
 		if print_snd_played = false
 		{
+			audio_stop_sound(snd_printing);
 			audio_play_sound(snd_wing, 8, false);
 		    print_snd_played = true;
 		}

@@ -368,7 +368,8 @@ if secondary_text[page] != ""
 	    }
 	    else
 	    {
-	        secondary_draw_char += text_speed;
+	        var _sec_speed = text_speed_override[page] != noone ? text_speed_override[page] : text_speed;
+			secondary_draw_char += _sec_speed;
 	        secondary_draw_char = clamp(secondary_draw_char, 0, _sec_length);
 
 	        // play the speaker's tick sound as new characters get revealed
@@ -396,7 +397,7 @@ if secondary_text[page] != ""
 
     if (string_length(_sec_str) > 0)
     {
-        var _sec_scale = 1.4;              // smaller than the main text_scale (2)
+        var _sec_scale = 1;              // smaller than the main text_scale (2)
         var _sec_margin_x = 14;             // left/right padding around the aside
         var _sec_margin_y = 10;             // inset from the main box's bottom edge
         var _sec_base_portrait_scale = 0.7;
@@ -409,6 +410,12 @@ if secondary_text[page] != ""
 		if (secondary_portrait_spr[page] == spr_lancer_dialogue)
 		{
 		    _sec_draw_portrait_scale *= 1.15;
+		}
+		else if (secondary_portrait_spr[page] == spr_ralsei_dialogue)
+		{
+		    _sec_draw_portrait_scale *= 1.15;
+			_sec_portrait_y_adjust = -3;
+			_sec_text_y_adjust = -10;
 		}
 		else if (secondary_portrait_spr[page] == spr_queen_dialogue)
 		{
@@ -434,7 +441,46 @@ if secondary_text[page] != ""
 		draw_set_font(fnt_determination);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
-		draw_text_transformed_color(_sec_x + _sec_text_x_adjust, _sec_y + _sec_text_y_adjust, _sec_str, _sec_scale, _sec_scale, 0,
+
+		// wrap within the same right-hand border the main textbox respects
+		var _sec_max_w = (textbox_x + textbox_width - border) - (_sec_x + _sec_text_x_adjust);
+		var _sec_line_str = "";
+		var _sec_line_num = 0;
+		var _sec_char_count = string_length(_sec_str);
+
+		for (var i = 1; i <= _sec_char_count; i++)
+		{
+		    var _ch = string_char_at(_sec_str, i);
+		    var _test_line = _sec_line_str + _ch;
+
+		    if (string_width(_test_line) * _sec_scale > _sec_max_w && _sec_line_str != "")
+		    {
+		        var _break_at = string_last_pos(" ", _sec_line_str);
+
+		        if (_break_at > 0)
+		        {
+		            draw_text_transformed_color(_sec_x + _sec_text_x_adjust, _sec_y + _sec_text_y_adjust + _sec_line_num * _sec_h,
+		                string_copy(_sec_line_str, 1, _break_at - 1), _sec_scale, _sec_scale, 0,
+		                _sec_col, _sec_col, _sec_col, _sec_col, 1);
+		            _sec_line_str = string_copy(_sec_line_str, _break_at + 1, string_length(_sec_line_str) - _break_at) + _ch;
+		        }
+		        else
+		        {
+		            draw_text_transformed_color(_sec_x + _sec_text_x_adjust, _sec_y + _sec_text_y_adjust + _sec_line_num * _sec_h,
+		                _sec_line_str, _sec_scale, _sec_scale, 0,
+		                _sec_col, _sec_col, _sec_col, _sec_col, 1);
+		            _sec_line_str = _ch;
+		        }
+		        _sec_line_num++;
+		    }
+		    else
+		    {
+		        _sec_line_str = _test_line;
+		    }
+		}
+
+		draw_text_transformed_color(_sec_x + _sec_text_x_adjust, _sec_y + _sec_text_y_adjust + _sec_line_num * _sec_h,
+		    _sec_line_str, _sec_scale, _sec_scale, 0,
 		    _sec_col, _sec_col, _sec_col, _sec_col, 1);
     }
 }

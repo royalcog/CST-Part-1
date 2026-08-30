@@ -310,6 +310,7 @@ function scr_game_text(_text_id)
 		        scr_obj_sprite_on_page(obj_tenna, spr_tenna_whisper, false);
 		        scr_obj_sprite_after_textbox(obj_tenna, spr_tenna_headup, false);
 		        scr_obj_spawn_after_textbox(obj_queen_print, obj_queen.x, obj_queen.y, "Instances");
+				scr_snd_after_textbox(snd_printing, 1);
 		break;
 		
 		case "self_22":
@@ -344,31 +345,34 @@ function scr_game_text(_text_id)
 				scr_obj_sprite_on_page(obj_tenna, spr_tenna_point_at_screen, false);
 			scr_text("* ...What?", "ralsei", 21);
 			scr_text("* Lay it on us, Ralsei!", "tenna");
+			scr_text("* What do you guys think of Noelle's return to the Dark World?", "ralsei", 4);
+			scr_text("* I know Susie really wants it, and I don't blame her, but...", "ralsei", 8);
+			scr_text("* Something about this doesn't feel like... the right thing to want.", "ralsei", 18);
+			scr_text("* It's not even a matter of the Prophecy, it's just...", "ralsei", 5);
+			scr_text("* I Think Noelle Would Be A Great Addition To My Town", "queen", 1);
+				scr_obj_sprite_on_page(obj_queen, spr_queen_walk_down, false);
+			scr_text("* Your... town?", "ralsei", 22);
+			scr_text("* Did I Stutter", "queen", 1);
+				scr_obj_sprite_on_page(obj_queen, spr_queen_laughing, true);
+			scr_text("* I can't really fit a 4th podium for the gameshow, so...", "tenna");
+				scr_obj_sprite_on_page(obj_queen, spr_queen_walk_down, false);
+			scr_text("* If she wants to join, you gotta kick Susie out. ", "tenna");
+				scr_obj_sprite_on_page(obj_tenna, spr_tenna_laugh_up, false);
+				scr_text_secondary("We're not doing your show again???", "ralsei", 30);
 		break;
 /*
-Ralsei: Anyways, I wanted to get both of your opinions on something.
-Tenna: Lay it on us, plushie!
-Ralsei: ...What?
-Tenna: Lay it on us, Ralsei!
-Ralsei: What do you guys think of Noelle’s return to the Dark World?
-Ralsei: I know Susie really wants it, and I don’t blame her, but...
-Ralsei: Something about this doesn’t feel like... the right thing to want.
-Ralsei: It’s not even a matter of the Prophecy, it’s just...
-Queen: I Think Noelle Would Be A Great Addition To My Town
-Ralsei: Your... town?
-Queen: Did I Stutter
-Tenna: I can’t really fit a 4th podium for the gameshow, so...
+Tenna: I can't really fit a 4th podium for the gameshow, so...
 Tenna: If she wants to join, you gotta kick Susie out. 
-	(Ralsei: We’re not doing your show again???)
+	(Ralsei: We're not doing your show again???)
 Ralsei: It just feels weird, you know?
-Ralsei: It’s been the three of us for the whole time, and now...
+Ralsei: It's been the three of us for the whole time, and now...
 Queen: She Was With You Guys Like 3 Days Ago
 Queen: As Was Burghley
 Queen: L Memory Loss
 	(Ralsei: Okay...)
-Ralsei: I guess the real point is that I’m worried she’ll disrupt plans that are already in motion.
-Ralsei: The Prophecy says what it says, and there isn’t much I can do to change it, but...
-Queen: Didn’t That Flower Man Tell You To Stop Doing That
+Ralsei: I guess the real point is that I'm worried she'll disrupt plans that are already in motion.
+Ralsei: The Prophecy says what it says, and there isn't much I can do to change it, but...
+Queen: Didn't That Flower Man Tell You To Stop Doing That
 Ralsei: How... How did you know about Flowery???
 Queen: Orb
 	(Ralsei: ...)
