@@ -305,10 +305,11 @@ function scr_game_text(_text_id)
 		
 		case "self_21":
 			if (!audio_is_playing(sng_queensboard)){audio_play_sound(sng_queensboard, 1, true)}
-			scr_text("* The kid needs his face on EVERY banner?", "tenna");
-			scr_text("* Jeez, that's more publicity than I get!", "tenna");
-				scr_obj_sprite_on_page(obj_tenna, spr_tenna_whisper, false);
-				scr_obj_sprite_after_textbox(obj_tenna, spr_tenna_headup, false);
+		    scr_text("* The kid needs his face on EVERY banner?", "tenna");
+		    scr_text("* Jeez, that's more publicity than I get!", "tenna");
+		        scr_obj_sprite_on_page(obj_tenna, spr_tenna_whisper, false);
+		        scr_obj_sprite_after_textbox(obj_tenna, spr_tenna_headup, false);
+		        scr_obj_spawn_after_textbox(obj_queen_print, obj_queen.x, obj_queen.y, "Instances");
 		break;
 		
 		case "self_22":
