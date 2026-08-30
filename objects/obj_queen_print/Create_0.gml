@@ -3,23 +3,23 @@ print_index = 1;
 print_width = sprite_get_width(print_spr);
 print_height = sprite_get_height(print_spr);
 
-mouth_offset_x = 0;
-mouth_offset_y = 20; // distance from Queen's origin down to her mouth — tune this
+mouth_offset_x = -5;
+mouth_offset_y = -33;
 
 x = obj_queen.x + mouth_offset_x;
 y = obj_queen.y + mouth_offset_y;
 
-squish_x_scale = 0.4; // thin while printing
-full_x_scale = 2;     // full width once popped open
+squish_x_scale = 0.15; // thin while printing
+full_x_scale = 1;      // smaller overall than before (was 2)
 x_scale = squish_x_scale;
-y_scale = 2;
+y_scale = 1;            // smaller overall than before (was 2)
 
 reveal_height = 0;
 reveal_timer = 0;
-reveal_length = 40;
+reveal_length = 90; // slower reveal (was 40)
 
 pop_timer = 0;
-pop_length = 8;
+pop_length = 16; // slower pop (was 8)
 
 phase = "printing";
 
