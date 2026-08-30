@@ -13,7 +13,10 @@
     "name":"Queen Print",
     "path":"folders/Objects/Special Cutscenes/Queen Print.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_light_source",
+    "path":"objects/obj_light_source/obj_light_source.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

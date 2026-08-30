@@ -23,10 +23,16 @@ pop_length = 16; // slower pop (was 8)
 
 phase = "printing";
 
-audio_play_sound(snd_wing, 8, false);
-
 light_on = true;
 light_radius = 90;
 light_strength = 0.6;
 light_offset_x = 0;
 light_offset_y = (print_height * y_scale) / 2;
+
+post_wait_time = 20; // frames to hold after printing finishes, before flying off
+post_wait_timer = 0;
+
+fly_speed = 0.08; // lerp rate — lower is slower/floatier
+
+var _cam = scr_get_gui_scale();
+fly_target_x = _cam.vx - 100; // just past the camera's left edge
