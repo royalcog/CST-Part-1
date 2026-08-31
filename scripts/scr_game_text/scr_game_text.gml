@@ -443,8 +443,80 @@ function scr_game_text(_text_id)
 			scr_text("* Let Me Go Have A Chit Chat With This Guy", "queen", 3);
 			scr_text("* Okay!|* Enjoy!", "lancer", 3);
 		break;
+		
+		case "self_29":
+			scr_fade_warp_with_music(rm_six, 240, sng_cardjail);
+		break;
+		
+		case "self_30":
+			scr_char_move_after_textbox(obj_queen, spr_queen_walk_right, true, 30, 0, .2, 90);
+		break;
+		
+		case "self_31":
+			scr_text("* Hey", "queen", 2);
+				scr_obj_sprite_on_page(obj_king, spr_king_walk_left, false);
+			scr_text("* What do you want?", "king", 5);
+			scr_text("* Why Are You Tricking Lancer", "queen", 2);
+			scr_text("* And Who Did You Call On The Phone", "queen", 0);
+				scr_text_secondary("I Can Check Records", "queen", 6)
+			scr_text("* No one of your concern, woman.", "king", 0);
+			scr_text("* Don't bother with the records, either. I already deleted the conversation.", "king", 4);
+			scr_text("* Darn My One Weakness", "queen", 10);
+			scr_text("* Anyways", "queen", 9);
+			scr_text("* The First Question", "queen", 0);
+			scr_text("* There is no trickery in the slightest.", "king", 5);
+			scr_text("* Why do you assume such foul play of me?", "king", 10);
+			scr_text("* You Literally Threatened To Throw Him Off A Cliff", "queen", 16);
+			scr_text("* As I told him, it was just a bluff.", "king", 0);
+			scr_text("* You Don't Threaten To Do That To A Kid", "queen", 17);
+			scr_text("* That's Just Messed Up", "queen", 16);
+			scr_text("* Who are you to critique my parenting skills?", "king", 5);
+			scr_text("* Lancer has grown up into a fine young pumpkin.", "king", 7);
+			scr_text("* How Often Do You Beat Him", "queen", 13);
+			scr_text("* ...", "king", 8);
+			scr_text("* How DARE you accuse me of hurting my child.", "king", 9);
+			scr_text("* He's Basically My Kid At This Point", "queen", 24);
+			scr_text("* You've known him for a few days. He is in no way your son as he is mine.", "king", 6);
+			scr_text("* I'm Pretty Sure He Respects Me More Than You", "queen", 6);
+			scr_text("* Plus I Don't Threaten To Kill Him", "queen", 13);
+			scr_text("* Or His Friends", "queen", 9);
+			scr_text("* Is that so?", "king", 5);
+			scr_text("* Well I Mean There Was That One Time But They Were Fine LOL", "queen", 25);
+			scr_text("* Also You Wanted Them To Like: Actually Die", "queen", 5);
+			scr_text("* That's Kinda Mean", "queen", 2);
+			scr_text("* They deserved it.|* They still do.", "king", 0);
+			scr_text("* But do not fret. A plan is working its ways through the system as we speak.", "king", 4);
+			scr_text("* Doesn't Sound Like You've Changed Much", "queen", 3);
+			scr_text("* As I promised my son, I will not lift a finger to harm anybody here, nor the heroes.", "king", 0);
+			scr_text("* All I want is to be free.", "king", 1);
+			scr_text("* That's Interesting", "queen", 0);
+			scr_text("* Why is that?", "king", 5);
+			scr_text("* You Want To Be Free Yet You Trapped That Clown Down In Your Castle", "queen", 11);
+			scr_text("* ...", "king", 6);
+			scr_text("* Who told you about him?", "king", 5);
+			scr_text("* My Kid", "queen", 7);
+			scr_text("* ...", "king", 5);
+			scr_text("* Jevil was a different situation.", "king", 5);
+			scr_text("* So Basically Someone Goes Crazy And You Lock Them Up", "queen", 10);
+			scr_text("* Wow Sounds Familiar Doesn't It", "queen", 11);
+				scr_text_secondary("Wink Wink", "queen", 23);
+			scr_text("* I am not crazy.", "king", 8);
+			scr_text("* Keep Telling Yourself That", "queen", 9);
+			scr_text("* Maybe One Day It'll Be True", "queen", 20);
+				scr_char_move_after_textbox(obj_queen, spr_queen_walk_left, true, -30, 0, .2, 90);
+		break;
+		
+		case "self_32":
+			scr_fade_warp_with_music(rm_one, 999999999999, sng_empty);
+		break;
 /*
-(Queen walks to the room where King is)
+Queen: So Basically Someone Goes Crazy And You Lock Them Up
+Queen: Wow Sounds Familiar Doesn't It
+	(Queen: Wink Wink)
+King: I am not crazy.
+Queen: Keep Telling Yourself That
+Queen: Maybe One Day It'll Be True
+(Queen walks out)
 */
 
 		/*array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {
