@@ -383,10 +383,20 @@ if secondary_text[page] != ""
 	                {
 	                    secondary_snd_count++;
 	                }
-	                else
+		            else
 	                {
 	                    secondary_snd_count = 0;
-	                    audio_play_sound(secondary_snd[page], 8, false);
+
+	                    if secondary_snd[page] == snd_queen
+	                    {
+	                        audio_stop_sound(snd_queen);
+	                        var _sec_q_inst = audio_play_sound(snd_queen, 8, false);
+	                        audio_sound_pitch(_sec_q_inst, 0.9 + random(0.15));
+	                    }
+	                    else
+	                    {
+	                        audio_play_sound(secondary_snd[page], 8, false);
+	                    }
 	                }
 	            }
 	        }
