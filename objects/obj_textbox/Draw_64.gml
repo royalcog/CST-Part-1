@@ -414,7 +414,7 @@ if secondary_text[page] != ""
 	    else if (secondary_portrait_spr[page] == spr_ralsei_dialogue)
 	    {
 	        _sec_draw_portrait_scale *= 1.15;
-	        _sec_portrait_y_adjust = 2;
+	        _sec_portrait_y_adjust = -18;
 	        _sec_text_y_adjust = 4;
 	    }
 	    else if (secondary_portrait_spr[page] == spr_queen_dialogue)
@@ -457,14 +457,15 @@ if secondary_text[page] != ""
 	        }
 	    }
 
-	    var _sec_y = textbox_y + textbox_height - _sec_h - _sec_margin_y + _sec_y_adjust - (_sec_total_lines * _sec_h);
+	    var _sec_portrait_y = textbox_y + textbox_height - _sec_h - _sec_margin_y + _sec_y_adjust;
+		var _sec_y = _sec_portrait_y - (_sec_total_lines * _sec_h);
 
 	    if (_sec_has_portrait)
-	    {
-	        draw_sprite_ext(secondary_portrait_spr[page], secondary_image[page], _sec_anchor_x + _sec_portrait_w / 2 + _sec_portrait_x_adjust,
-	            _sec_y + _sec_portrait_y_adjust, secondary_side[page] * _sec_draw_portrait_scale,
-	            _sec_draw_portrait_scale, 0, c_white, 1);
-	    }
+		{
+		    draw_sprite_ext(secondary_portrait_spr[page], secondary_image[page], _sec_anchor_x + _sec_portrait_w / 2 + _sec_portrait_x_adjust,
+		        _sec_portrait_y + _sec_portrait_y_adjust, secondary_side[page] * _sec_draw_portrait_scale,
+		        _sec_draw_portrait_scale, 0, c_white, 1);
+		}
 
 	    draw_set_font(fnt_determination);
 	    draw_set_halign(fa_left);

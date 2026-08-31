@@ -365,23 +365,86 @@ function scr_game_text(_text_id)
 			scr_text("* As Was Burghley", "queen", 9);
 			scr_text("* L Memory Loss", "queen", 1);
 				scr_obj_sprite_on_page(obj_queen, spr_queen_laughing, true);
-				scr_text_secondary("Okay...", "ralsei", 22);
+				scr_text_secondary("Okay...?", "ralsei", 22);
+			scr_text("* I guess the real point is that I'm worried she'll disrupt things in motion.", "ralsei", 4);
+				scr_obj_sprite_on_page(obj_tenna, spr_tenna_pose_podium, false);
+			scr_text("* The Prophecy says what it says, and there isn't much I can do to change it, but...", "ralsei", 5);
+			scr_text("* Didn't That Flower Man Tell You To Stop Doing That", "queen", 10);
+				scr_obj_sprite_on_page(obj_queen, spr_queen_walk_down, false);
+			scr_text("* How... How did you know about Flowery???", "ralsei", 12);
+			scr_text("* Orb", "queen", 1);
+				scr_text_secondary("...", "ralsei", 31);
+			scr_text("* Well, thanks, you guys!", "ralsei", 2);
+				scr_char_move_after_textbox(obj_ralsei, spr_ralsei_walk_down, true, 0, 15, .2, 75);
+		break;
+		
+		case "self_24":
+			scr_text("* Who's Noelle Again", "queen", 18);
+				scr_obj_sprite_on_page(obj_queen, spr_queen_walk_right, false);
+			scr_text("* Talk about a memory loss!", "tenna");
+				scr_obj_sprite_on_page(obj_tenna, spr_tenna_laugh, true);
+				scr_snd_on_page(snd_crowdlaugh, 1);
+			scr_text("* Shut Up There's A Server Malfunction", "queen", 16);
+				scr_obj_sprite_on_page(obj_tenna, spr_tenna_headup, false);
+			scr_text("* Anyways Let Me Go Give This To Lancer", "queen", 1);
+			scr_queue_movement_group_after_textbox([
+			    { obj: obj_queen, sprite: spr_queen_walk_down, loop: true, dx: 0, dy: 15, speed: .2, duration: 30 }
+			]);
+			scr_queue_movement_group_after_textbox([
+			    { obj: obj_queen, sprite: spr_queen_walk_right, loop: true, dx: 18, dy: 0, speed: .2, duration: 30 }
+			]);
+			scr_queue_movement_group_after_textbox([
+			    { obj: obj_queen, sprite: spr_queen_walk_down, loop: true, dx: 0, dy: 30, speed: .2, duration: 90 }
+			]);
+		break;
+		
+		case "self_25":
+			scr_text("* Guess I'll just...", "tenna");
+			scr_text("* Go talk to Mike?", "tenna");
+		break;
+		
+		case "self_26":
+			scr_fade_warp_with_music(rm_five, 240, sng_empty);
+		break;
+		
+		case "self_27":
+			scr_char_move_after_textbox(obj_queen, spr_queen_walk_right, true, 30, 0, .2, 120);
+			scr_obj_sprite_after_textbox_delayed(obj_queen, spr_queen_walk_up, false, 120);
+		break;
+		
+		case "self_28":
+			scr_text("* I Printed Out Your Face", "queen", 1);
+			scr_text("* I Completely Forgot To Bring It Though", "queen", 9);
+				scr_text_secondary("My Bad", "queen", 1)
+			scr_text("* Thank you Girldad!", "lancer", 1);
+			scr_text("* Why Are You Standing Out Here", "queen", 15);
+			scr_text("* ...", "lancer", 6);
+			scr_text("* Can you keep a secret?", "lancer", 0);
+			scr_text("* Sure", "queen", 1);
+				scr_text_secondary("???", "queen", 18)
+			scr_text("* I let my dad out of his cage for a bit so he could stretch his legs.", "lancer", 2);
+			scr_text("* ...", "queen", 1);
+			scr_text("* You Did What", "queen", 21);
+			scr_text("* It's okay!|* He's not gonna leave the room.", "lancer", 3);
+			scr_text("* Especially because I gave him a phone to call his friends while he's out!", "lancer", 1);
+			scr_text("* Whose Phone Did You Give Him", "queen", 3);
+			scr_text("* Yours.", "lancer", 2);
+			scr_text("* ...", "queen", 4);
+			scr_text("* Why Did You Let Him Out", "queen", 3);
+			scr_text("* He's Dangerous", "queen", 5);
+			scr_text("* He's changed!", "lancer", 1);
+			scr_text("* How So", "queen", 11);
+			scr_text("* He was giving me a bunch of compliments,", "lancer", 2);
+			scr_text("* and he gave me his word that he wouldn't attack my friends!", "lancer", 3);
+			scr_text("* And How Much Do You Value His Word", "queen", 13);
+			scr_text("* ...", "lancer", 6);
+			scr_text("* He's my dad... I have to trust him.", "lancer", 7);
+			scr_text("* ...", "queen", 4);
+			scr_text("* Let Me Go Have A Chit Chat With This Guy", "queen", 3);
+			scr_text("* Okay!|* Enjoy!", "lancer", 3);
 		break;
 /*
-Ralsei: It just feels weird, you know?
-Ralsei: It's been the three of us for the whole time, and now...
-Queen: She Was With You Guys Like 3 Days Ago
-Queen: As Was Burghley
-Queen: L Memory Loss
-	(Ralsei: Okay...)
-Ralsei: I guess the real point is that I'm worried she'll disrupt plans that are already in motion.
-Ralsei: The Prophecy says what it says, and there isn't much I can do to change it, but...
-Queen: Didn't That Flower Man Tell You To Stop Doing That
-Ralsei: How... How did you know about Flowery???
-Queen: Orb
-	(Ralsei: ...)
-Ralsei: Well, thanks, you guys!
-(Ralsei leaves)
+(Queen walks to the room where King is)
 */
 
 		/*array_push(obj_cutscenehandler_midfightattacks.after_textbox_queue, {
